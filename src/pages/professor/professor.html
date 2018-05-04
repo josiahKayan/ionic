@@ -1,0 +1,22 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Professores</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let professor of professores">
+      <ion-thumbnail item-start>
+        <!-- <img src="img/thumbnail-totoro.png"> -->
+        <img src="https://s.aficionados.com.br/imagens/guerra-civil-2-portugues.jpg">
+      </ion-thumbnail>
+      <h2>{{professor.Nome}}</h2>
+      <h3>{{professor.NomeCompleto}}</h3>
+      <button ion-button clear item-end>Detalhes</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

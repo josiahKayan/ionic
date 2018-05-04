@@ -1,0 +1,26 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Alunos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let aluno of alunos">
+      <ion-thumbnail item-start>
+        <!-- <img src="img/thumbnail-totoro.png"> -->
+        <img src="https://cdn.vox-cdn.com/thumbor/s_HqWQZ-SI1MqQwV1eXvtgBwnGc=/0x0:578x327/1200x800/filters:focal(243x118:335x210)/cdn.vox-cdn.com/uploads/chorus_image/image/56976933/halloween_2017_169.0.jpg">
+      </ion-thumbnail>
+      <h2>{{aluno.Nome}}</h2>
+      <h3>{{aluno.NomeCompleto}}</h3>
+      <button ion-button clear item-end>Detalhes</button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="novo()">+</button>
+  </ion-fab>
+</ion-content>

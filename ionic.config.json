@@ -4,5 +4,12 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies":[
+    {
+      "path":"/aluno",
+      "proxyUrl":"http://localhost:8090"
+    }
+  ]
 }
+
