@@ -1,0 +1,53 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Novo Curso</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]='nome'></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input type="text" [(ngModel)]='descricao'></ion-input>
+    </ion-item>
+  
+    
+    <ion-item>
+      <ion-label>Ativo</ion-label>
+      <ion-checkbox color="d488aff" checked="true" [(ngModel)]='ativo'></ion-checkbox>
+    </ion-item>
+
+    <!-- <ion-list>
+      <ion-item>
+        <ion-label>Tag</ion-label>
+        <ion-select [(ngModel)]="gaming">
+          <ion-option value="nes">NES</ion-option>
+          <ion-option value="n64">Nintendo64</ion-option>
+          <ion-option value="ps">PlayStation</ion-option>
+          <ion-option value="genesis">Sega Genesis</ion-option>
+          <ion-option value="saturn">Sega Saturn</ion-option>
+          <ion-option value="snes">SNES</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list> -->
+
+    
+
+  </ion-list>
+  
+  <div padding>
+    <button block (click)="salvarCurso()">Adicionar</button>
+  </div>
+
+</ion-content>

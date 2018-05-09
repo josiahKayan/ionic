@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http, HttpModule } from '@angular/http';
 import { CadastrarAlunoPage } from '../cadastrar-aluno/cadastrar-aluno';
-
 import 'rxjs/add/operator/map';
 
 @IonicPage()
@@ -23,7 +22,7 @@ export class AlunoPage {
   Content(): void {
 
     try {
-      this.http.get(this.basepath).map(res => res.json()).subscribe(res => {
+       this.http.get(this.basepath).map(res => res.json()).subscribe(res => {
         this.alunos = res;
         // alert(JSON.stringify(this.alunos));
       });

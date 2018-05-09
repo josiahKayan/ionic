@@ -12,9 +12,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 // import { WeatherProvider } from '../providers/weather/weather';
 import { Http ,HttpModule} from '@angular/http' ;
-// import { RedditServiceProvider } from '../providers/reddit-service/reddit-service';
 import {CursoPage} from '../pages/curso/curso';
 import { CadastrarAlunoPage } from '../pages/cadastrar-aluno/cadastrar-aluno';
+import { CadastrarCursoPage } from '../pages/cadastrar-curso/cadastrar-curso';
 
 
 @NgModule({
@@ -25,7 +25,8 @@ import { CadastrarAlunoPage } from '../pages/cadastrar-aluno/cadastrar-aluno';
     HomePage,
     CursoPage,
     TabsPage,
-    CadastrarAlunoPage
+    CadastrarAlunoPage,
+    CadastrarCursoPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,8 @@ import { CadastrarAlunoPage } from '../pages/cadastrar-aluno/cadastrar-aluno';
     HomePage,
     CursoPage,
     TabsPage,
-    CadastrarAlunoPage
+    CadastrarAlunoPage,
+    CadastrarCursoPage
   ],
   providers: [
     StatusBar,
