@@ -1,0 +1,36 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>cadastrar-tag</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Code</ion-label>
+      <ion-input type="text" [(ngModel)]='code'></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Ativo</ion-label>
+      <ion-checkbox color="d488aff" checked="true" [(ngModel)]='status'></ion-checkbox>
+    </ion-item>
+    
+
+  </ion-list>
+  
+  <div padding [hidden]="save">
+    <button block (click)="salvarCurso()">Adicionar</button>
+  </div>
+
+  <div padding [hidden]="edit">
+    <button block (click)="editarCurso(tagId)">Salvar Edição</button>
+  </div>
+
+</ion-content>

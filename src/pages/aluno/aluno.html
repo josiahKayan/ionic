@@ -16,7 +16,8 @@
       </ion-thumbnail>
       <h2>{{aluno.Nome}}</h2>
       <h3>{{aluno.NomeCompleto}}</h3>
-      <button ion-button clear item-end>Detalhes</button>
+      <button ion-button clear item-end (click)="detalhar(aluno.AlunoId)">Detalhes</button>
+      <button ion-button clear item-end (click)="excluir(aluno.AlunoId);">Excluir</button>>
     </ion-item>
   </ion-list>
 

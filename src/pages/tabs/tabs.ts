@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { CursoPage } from '../curso/curso';
 import { ProfessorPage } from '../professor/professor';
 import {AlunoPage} from '../aluno/aluno';
+import {TagPage} from '../tag/tag';
 
 
 @Component({
@@ -11,11 +12,11 @@ import {AlunoPage} from '../aluno/aluno';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
+  // tab1Root = HomePage; 
   tab2Root = CursoPage;
   tab3Root = ProfessorPage;
   tab5Root = AlunoPage;
-  
+  tab6Root = TagPage;
 
   constructor() {
 

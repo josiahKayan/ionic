@@ -2,23 +2,29 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http, HttpModule,Headers } from '@angular/http';
-import { CadastrarProfessorPage } from '../cadastrar-professor/cadastrar-professor';
+import { CadastrarTagPage } from '../cadastrar-tag/cadastrar-tag';
 import 'rxjs/add/operator/map';
+
+/**
+ * Generated class for the TagPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
-  selector: 'page-professor',
-  templateUrl: 'professor.html',
+  selector: 'page-tag',
+  templateUrl: 'tag.html',
 })
-export class ProfessorPage {
+export class TagPage {
 
-  public professores: Array<any>;
-  private url: string = "http://localhost:8090/professor/professores";  
+  public tags: Array<Tag>;
+  private url: string = "http://localhost:8090/tag/tags";  
   delete = "/delete";
-  
-  
+
   constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
-    this.delete = 'http://localhost:8090/professor/';
+    this.delete = 'http://localhost:8090/tag/';
     this.Content();
   }
 
@@ -32,8 +38,8 @@ export class ProfessorPage {
 
     try {
       this.http.get(this.url).map(res => res.json()).subscribe(res => {
-        this.professores = res;
-        // alert(JSON.stringify(this.professores));
+        this.tags = res;
+        //alert(JSON.stringify(this.tags));
         loading.dismiss();
       });
     }
@@ -44,14 +50,14 @@ export class ProfessorPage {
   }
 
   novo():void{
-    this.navCtrl.push(CadastrarProfessorPage);
+    this.navCtrl.push(CadastrarTagPage);
   }
 
   detalhar( id: string){
-    this.navCtrl.push(CadastrarProfessorPage,{'id': id});
+    this.navCtrl.push(CadastrarTagPage,{'id': id});
   } 
 
-  excluir( id: string){
+  excluir( tag: Tag, id : string){
 
     let loading = this.loadingCtrl.create({
       content: 'Carregando...'
@@ -72,10 +78,14 @@ export class ProfessorPage {
       .subscribe(
         (result) => {
           if(result.indexOf('OK')){
-            
             loading.dismiss();
-
-            alert('The course was removed');
+            let index = this.tags.indexOf(tag);
+          
+              if(index > -1){
+                this.tags.splice(index, 1);
+                alert('The tag was removed');
+                
+              }
           }
         }
       );
@@ -85,10 +95,13 @@ export class ProfessorPage {
   }
 
 
-
-
 }
 
 
 
-
+export class Tag {
+  tagId: string;
+  code: string;
+  status: boolean;
+  
+}

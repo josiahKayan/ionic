@@ -46,8 +46,12 @@
 
   </ion-list>
   
-  <div padding>
+  <div padding [hidden]="save">
     <button block (click)="salvarCurso()">Adicionar</button>
+  </div>
+
+  <div padding [hidden]="edit">
+    <button block (click)="editarCurso(cursoId)">Salvar Edição</button>
   </div>
 
 </ion-content>

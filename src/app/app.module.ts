@@ -15,7 +15,10 @@ import { Http ,HttpModule} from '@angular/http' ;
 import {CursoPage} from '../pages/curso/curso';
 import { CadastrarAlunoPage } from '../pages/cadastrar-aluno/cadastrar-aluno';
 import { CadastrarCursoPage } from '../pages/cadastrar-curso/cadastrar-curso';
+import { CadastrarProfessorPage } from '../pages/cadastrar-professor/cadastrar-professor';
+import { CadastrarTagPage } from '../pages/cadastrar-tag/cadastrar-tag';
 
+import { TagPage } from '../pages/tag/tag';
 
 @NgModule({
   declarations: [
@@ -25,8 +28,11 @@ import { CadastrarCursoPage } from '../pages/cadastrar-curso/cadastrar-curso';
     HomePage,
     CursoPage,
     TabsPage,
+    TagPage,
     CadastrarAlunoPage,
-    CadastrarCursoPage
+    CadastrarCursoPage,
+    CadastrarProfessorPage,
+    CadastrarTagPage
   ],
   imports: [
     BrowserModule,
@@ -41,8 +47,11 @@ import { CadastrarCursoPage } from '../pages/cadastrar-curso/cadastrar-curso';
     HomePage,
     CursoPage,
     TabsPage,
+    TagPage,
     CadastrarAlunoPage,
-    CadastrarCursoPage
+    CadastrarCursoPage,
+    CadastrarProfessorPage,
+    CadastrarTagPage
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http,HttpModule,Headers } from '@angular/http';
 import { CadastrarCursoPage } from '../cadastrar-curso/cadastrar-curso';
@@ -25,22 +25,29 @@ export class CursoPage {
   public cursos : Array<any>;
   private url: string = "http://localhost:8090/curso/cursos";  
 
-  constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
+  constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
+    
     this.fetchContent();
     this.delete = 'http://localhost:8090/curso/';
   }
 
   fetchContent ():void {
-    // let loading = this.loadingCtrl.create({
-    //   content: 'Fetching content...'
-    // });
 
-    // loading.present();
+    let loading = this.loadingCtrl.create({
+      content: 'Carregando...'
+    });
+
+    loading.present();
+
+    // setTimeout(function () {
+    // },2000);
 
     try{
     this.http.get(this.url).map(res => res.json()).subscribe(res => {
       this.cursos = res;
       // alert( JSON.stringify( this.cursos ) );
+      loading.dismiss();
+      
      });
     }
     catch(err){
@@ -50,34 +57,41 @@ export class CursoPage {
   }
 
   novo():void{
-    alert('Novo');
     this.navCtrl.push(CadastrarCursoPage);
   }
 
   detalhar( id: string){
-    alert('The number is '+id);
+    this.navCtrl.push(CadastrarCursoPage,{'id': id});
   } 
 
   excluir( id: string){
+
+    let loading = this.loadingCtrl.create({
+      content: 'Carregando...'
+    });
+
+    loading.present();
+
     let headers = new Headers();
     headers.append('Access-Control-Allow-Origin' , '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE,PUT');
     headers.append('Accept','application/json');
     headers.append('content-type','application/json');
 
-    this.http.delete(this.delete+'delete/'+id  ,{ headers: headers })
+    this.http.get(this.delete+'delete/'+id  ,{ headers: headers })
       .map(
         res => res.json()
       )
       .subscribe(
         (result) => {
-          if(result.indexOf('OK')){
+          // if(result.indexOf('OK')){
+            loading.dismiss();
             alert('The course was removed');
-            this.navCtrl.push(CursoPage);
-          }
+          // }
         }
       );
-
+      this.viewCtrl.dismiss();
+      
   
   }
 

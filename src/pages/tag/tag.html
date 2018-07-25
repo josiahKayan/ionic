@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Tags</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let tag of tags">
+      
+      <h2>{{tag.Code}}</h2>
+      
+      
+
+      <button ion-button clear item-end (click)="detalhar(tag.TagId)">Detalhes</button>
+      <button ion-button clear item-end (click)="excluir(tag,tag.TagId);">Excluir</button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="novo()">+</button>
+  </ion-fab>
+</ion-content>

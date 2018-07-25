@@ -16,7 +16,12 @@
       </ion-thumbnail>
       <h2>{{professor.Nome}}</h2>
       <h3>{{professor.NomeCompleto}}</h3>
-      <button ion-button clear item-end>Detalhes</button>
+      <button ion-button clear item-end (click)="detalhar(professor.ProfessorId)">Detalhes</button>
+      <button ion-button clear item-end (click)="excluir(professor.ProfessorId);">Excluir</button>
     </ion-item>
   </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="novo()">+</button>
+  </ion-fab>
 </ion-content>

@@ -1,4 +1,3 @@
-
 <ion-header>
 
   <ion-navbar>
@@ -14,59 +13,74 @@
 
     <ion-item>
       <ion-label stacked>Nome</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]='nome'></ion-input>
     </ion-item>
-  
+
     <ion-item>
       <ion-label stacked>Nome Completo</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]='nomeCompleto'></ion-input>
     </ion-item>
-  
+
     <ion-item>
       <ion-label stacked>Idade</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]='idade'></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Data de Nascimento</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Imagem</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]='dataNascimento'></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>login</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]='email'></ion-input>
     </ion-item>
 
 
     <ion-item>
       <ion-label stacked>password</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]='senha'></ion-input>
     </ion-item>
-    <ion-list>
-      <ion-item>
-        <ion-label>Tag</ion-label>
-        <ion-select [(ngModel)]="gaming">
-          <ion-option value="nes">NES</ion-option>
-          <ion-option value="n64">Nintendo64</ion-option>
-          <ion-option value="ps">PlayStation</ion-option>
-          <ion-option value="genesis">Sega Genesis</ion-option>
-          <ion-option value="saturn">Sega Saturn</ion-option>
-          <ion-option value="snes">SNES</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
 
-    
+
+
+
+    <ion-row>
+      <ion-col col-6>
+
+        <ion-item>
+          <ion-label stacked>tag</ion-label>
+          <ion-input type="text" [(ngModel)]='tagCode'></ion-input>
+        </ion-item>
+      
+      </ion-col>
+        
+      <ion-col col-6>
+
+        <ion-list>
+          <ion-item>
+            <ion-label>Tags Disponíveis</ion-label>
+            <ion-select [(ngModel)]="selected" (ionChange)="onSelectChange($event)">
+
+              <ion-option *ngFor="let tag of tags" [value]="tag" >{{tag.Code}}</ion-option>
+              
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+
+
 
   </ion-list>
-  
-  <div padding>
-    <button block>Adicionar</button>
+
+  <div padding [hidden]="save">
+    <button block (click)="salvarCurso()">Adicionar</button>
+  </div>
+
+  <div padding [hidden]="edit">
+    <button block (click)="editarCurso(alunoId)">Salvar Edição</button>
   </div>
 
 </ion-content>
