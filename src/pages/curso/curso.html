@@ -10,10 +10,10 @@
 <ion-content padding>
 
   <ion-list inset>
-    <ion-item *ngFor="let curso of cursos">
+    <ion-item *ngFor="let curso of cursos; let i = index;">
        {{ curso.Nome }} - {{curso.CursoId}}
       <button ion-button clear item-end (click)="detalhar(curso.CursoId)">Detalhes</button>
-      <button ion-button clear item-end (click)="excluir(curso.CursoId);">Excluir</button>
+      <button ion-button clear item-end (click)="excluir(curso.CursoId,i);">Excluir</button>
     </ion-item>
   </ion-list>
 

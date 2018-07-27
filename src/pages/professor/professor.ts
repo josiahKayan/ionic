@@ -51,7 +51,7 @@ export class ProfessorPage {
     this.navCtrl.push(CadastrarProfessorPage,{'id': id});
   } 
 
-  excluir( id: string){
+  excluir( id: string, i : number){
 
     let loading = this.loadingCtrl.create({
       content: 'Carregando...'
@@ -73,9 +73,11 @@ export class ProfessorPage {
         (result) => {
           if(result.indexOf('OK')){
             
+           
+            (this.professores).splice(i,1);
+            alert('The course was removed');
             loading.dismiss();
 
-            alert('The course was removed');
           }
         }
       );
@@ -83,11 +85,9 @@ export class ProfessorPage {
       this.Content();
   
   }
-
-
-
-
 }
+
+
 
 
 

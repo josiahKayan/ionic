@@ -19,6 +19,8 @@ import { CadastrarProfessorPage } from '../pages/cadastrar-professor/cadastrar-p
 import { CadastrarTagPage } from '../pages/cadastrar-tag/cadastrar-tag';
 
 import { TagPage } from '../pages/tag/tag';
+import { CursoServiceProvider } from '../providers/curso-service/curso-service';
+import { UsuarioPage } from '../pages/usuario/usuario';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { TagPage } from '../pages/tag/tag';
     CadastrarAlunoPage,
     CadastrarCursoPage,
     CadastrarProfessorPage,
-    CadastrarTagPage
+    CadastrarTagPage,
+    UsuarioPage
   ],
   imports: [
     BrowserModule,
@@ -51,12 +54,14 @@ import { TagPage } from '../pages/tag/tag';
     CadastrarAlunoPage,
     CadastrarCursoPage,
     CadastrarProfessorPage,
-    CadastrarTagPage
+    CadastrarTagPage,
+    UsuarioPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CursoServiceProvider,
     // RedditServiceProvider,
 
     // WeatherProvider

@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http, HttpModule, Headers } from '@angular/http';
 import {ProfessorPage} from '../professor/professor';
+import { ModalController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
+import { UsuarioPage } from '../usuario/usuario';
 
 @IonicPage()
 @Component({
@@ -23,15 +25,34 @@ export class CadastrarProfessorPage {
   public save:boolean;
   public edit:boolean;
   public professor: Professor;
+  public login : string ;
+  public password : string ;
+  public confirm : string ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController
+  ,public modalCtrl: ModalController) {
       this.basepath = "http://localhost:8090/professor/addprofessor";
       this.save = false;
       this.edit = true;
       this.id = navParams.get('id');
+      this.login = this.navParams.get('email');
+      this.password = this.navParams.get('password');
+      this.confirm = this.navParams.get('confirm');
+
       this.carrega();
       
       
+  }
+
+  logIn() {
+    let profileModal = this.modalCtrl.create(UsuarioPage);
+    profileModal.present();
+
+    profileModal.onDidDismiss(data => {  
+      console.log(data);
+    });
   }
 
   salvarCurso() {
@@ -41,6 +62,17 @@ export class CadastrarProfessorPage {
     this.professor.imagem = this.imagem;
     this.professor.dataNascimento = this.dataNascimento;
     this.professor.idade = this.idade;
+    this.professor.usuario = new Usuario();
+    this.professor.usuario.email = this.login;
+    this.professor.usuario.senha = this.password;
+
+    this.professor.usuario.perfil = 1;
+
+    if( this.password != this.confirm ){
+      alert('As senhas não conferem');
+      
+    }
+    else{
 
 
     let loading = this.loadingCtrl.create({
@@ -69,8 +101,11 @@ export class CadastrarProfessorPage {
       );
       // location.reload();
       this.navCtrl.push(ProfessorPage);
+    }
       
   }
+
+  
 
   carrega() {
 
@@ -89,6 +124,7 @@ export class CadastrarProfessorPage {
       this.professor.dataNascimento = this.dataNascimento;
       this.professor.idade = this.idade;
       this.professor.professorId = ""+ this.id;
+      
 
       let headers = new Headers();
       headers.append('Access-Control-Allow-Origin' , '*');
@@ -161,6 +197,7 @@ export class CadastrarProfessorPage {
   
 }
 
+
 export class Professor {
   professorId: string;
   nome: string;
@@ -168,4 +205,13 @@ export class Professor {
   imagem: string;
   dataNascimento : string ;
   idade : number;
+  usuario : Usuario;
 }
+
+export class Usuario{
+  usuarioId: string;
+  email: string;
+  senha: string;
+  perfil: number;
+}
+

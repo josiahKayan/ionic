@@ -35,21 +35,23 @@
       <ion-input type="text" [(ngModel)]='idade'></ion-input>
     </ion-item>
 
-    <!-- <ion-list>
-      <ion-item>
-        <ion-label>Tag</ion-label>
-        <ion-select [(ngModel)]="gaming">
-          <ion-option value="nes">NES</ion-option>
-          <ion-option value="n64">Nintendo64</ion-option>
-          <ion-option value="ps">PlayStation</ion-option>
-          <ion-option value="genesis">Sega Genesis</ion-option>
-          <ion-option value="saturn">Sega Saturn</ion-option>
-          <ion-option value="snes">SNES</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list> -->
+    <ion-item>
+      <ion-label stacked>Login</ion-label>
+      <ion-input type="text" [(ngModel)]='login'></ion-input>
+    </ion-item>
 
-    
+
+   
+
+    <ion-item  ng-class="{ page-example  }">
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]='password' ></ion-input>
+    </ion-item>
+
+    <ion-item ng-class="{ page-example }">
+      <ion-label  stacked>Confirma Senha</ion-label>
+      <ion-input type="password" [(ngModel)]='confirm' ></ion-input>
+    </ion-item>
 
   </ion-list>
   

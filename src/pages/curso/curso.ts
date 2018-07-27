@@ -64,7 +64,7 @@ export class CursoPage {
     this.navCtrl.push(CadastrarCursoPage,{'id': id});
   } 
 
-  excluir( id: string){
+  excluir( id: string, i : number){
 
     let loading = this.loadingCtrl.create({
       content: 'Carregando...'
@@ -84,13 +84,16 @@ export class CursoPage {
       )
       .subscribe(
         (result) => {
-          // if(result.indexOf('OK')){
-            loading.dismiss();
+          if(result.indexOf('OK')){
+            
+            (this.cursos).splice(i,1);
             alert('The course was removed');
-          // }
+            loading.dismiss();
+
+          }
         }
       );
-      this.viewCtrl.dismiss();
+      // this.viewCtrl.dismiss();
       
   
   }
