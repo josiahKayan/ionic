@@ -5,6 +5,7 @@ import { Http,HttpModule,Headers } from '@angular/http';
 import { CadastrarCursoPage } from '../cadastrar-curso/cadastrar-curso';
 import 'rxjs/add/operator/map';
 
+
 export class Curso{
   Ativo: boolean;
   CursoId: number;
@@ -29,6 +30,7 @@ export class CursoPage {
     
     this.fetchContent();
     this.delete = 'http://localhost:8090/curso/';
+    
   }
 
   fetchContent ():void {

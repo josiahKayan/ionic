@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http, HttpModule, Headers } from '@angular/http';
 import {CursoPage} from '../curso/curso';
 import 'rxjs/add/operator/map';
+import { TurmasComponent } from '../../components/turmas/turmas';
 
 @IonicPage()
 @Component({
@@ -22,14 +23,24 @@ export class CadastrarCursoPage {
   public save:boolean;
   public edit:boolean;
   public cursoId:string;
+  modal:ModalController ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController, modal: ModalController) {
       this.basepath = "http://localhost:8090/curso/addcurso";
       this.save = false;
       this.edit = true;
       this.id = navParams.get('id');
       this.carrega();
+      this.modal = modal;
+  }
 
+  novaTurma(){
+    this.presentTurmaModal();
+  }
+
+  presentTurmaModal() {
+    let turmaModal = this.modal.create(TurmasComponent);
+    turmaModal.present();
   }
 
   salvarCurso() {

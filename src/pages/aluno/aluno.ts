@@ -52,7 +52,7 @@ export class AlunoPage {
     this.navCtrl.push(CadastrarAlunoPage,{'id': id});
   } 
 
-  excluir( id: string){
+  excluir( id: string, index : number){
 
     let loading = this.loadingCtrl.create({
       content: 'Carregando...'
@@ -73,8 +73,12 @@ export class AlunoPage {
       .subscribe(
         (result) => {
           if(result.indexOf('OK')){
-            loading.dismiss();
+            
             alert('The course was removed');
+            (this.alunos).splice(index,1);
+            loading.dismiss();
+
+
           }
         }
       );

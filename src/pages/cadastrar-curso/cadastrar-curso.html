@@ -28,21 +28,8 @@
       <ion-checkbox color="d488aff" checked="true" [(ngModel)]='ativo'></ion-checkbox>
     </ion-item>
 
-    <!-- <ion-list>
-      <ion-item>
-        <ion-label>Tag</ion-label>
-        <ion-select [(ngModel)]="gaming">
-          <ion-option value="nes">NES</ion-option>
-          <ion-option value="n64">Nintendo64</ion-option>
-          <ion-option value="ps">PlayStation</ion-option>
-          <ion-option value="genesis">Sega Genesis</ion-option>
-          <ion-option value="saturn">Sega Saturn</ion-option>
-          <ion-option value="snes">SNES</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list> -->
-
     
+     
 
   </ion-list>
   
@@ -54,4 +41,20 @@
     <button block (click)="editarCurso(cursoId)">Salvar Edição</button>
   </div>
 
+  <ion-label>Turmas</ion-label>
+  <ion-list inset>
+            <button ion-item> NES</button>
+            <button ion-item> Nintendo64</button>
+            <button ion-item> PlayStation</button>
+            <button ion-item> SNES</button>
+  </ion-list> 
+
+  <ion-fab right bottom>
+      <button ion-fab color="primary" (click)="novaTurma()">+</button>
+    </ion-fab>
+
 </ion-content>
+
+  
+
+   

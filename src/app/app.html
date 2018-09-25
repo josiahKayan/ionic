@@ -1,1 +1,21 @@
-<ion-nav [root]="rootPage"></ion-nav>
+
+<ion-menu  type="overlay" [content]="content">
+    <ion-content>
+
+
+
+    <ion-list>
+            <ion-item menuClose detail-none><ion-icon name="menu"> -  Menu</ion-icon></ion-item>
+            <ion-item menuClose detail-none ><ion-icon name="home" (click)="irHome()"> -  Início</ion-icon></ion-item>
+            <ion-item ><ion-icon name="contact" (click)="abrirPerfil()"> -   Perfil</ion-icon></ion-item>
+            <ion-item ><ion-icon name="people" (click)="abrirTurmas()"> -  Turmas</ion-icon></ion-item>
+
+            <ion-item><ion-icon name="exit" (click)="showConfirm()"> -  Sair</ion-icon></ion-item>
+
+
+
+    </ion-list>
+</ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>
+

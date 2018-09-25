@@ -22,6 +22,8 @@ export class CadastrarAlunoPage {
   public senha: string;
   public tagCode: string;
   public tags : Array<any> ;
+  public confirmarsenha :  string  ;
+  public mostrar : boolean = false;
 
   public dataNascimento : string ;
   public idade : number;
@@ -59,6 +61,8 @@ export class CadastrarAlunoPage {
     this.aluno.tag.code = this.tagCode;
     this.aluno.tag.status = 1;
 
+    
+
     alert(JSON.stringify(this.aluno));
 
     let loading = this.loadingCtrl.create({
@@ -92,7 +96,10 @@ export class CadastrarAlunoPage {
 
   carrega() {
 
+
+
     if(!(this.id == "" || this.id == undefined)){
+      this.mostrar = true;
 
       let loading = this.loadingCtrl.create({
         content: 'Carregando...'
@@ -222,7 +229,7 @@ export class CadastrarAlunoPage {
       loading.present();
   
       try {
-         this.http.get("http://localhost:8090/tag/tags").map(res => res.json()).subscribe(res => {
+         this.http.get("http://localhost:8090/tag/tags-free").map(res => res.json()).subscribe(res => {
           this.tags = res;
           // alert(JSON.stringify(this.alunos));
           loading.dismiss();

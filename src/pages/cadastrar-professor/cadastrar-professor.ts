@@ -28,6 +28,7 @@ export class CadastrarProfessorPage {
   public login : string ;
   public password : string ;
   public confirm : string ;
+  public mostrar : boolean = false;
 
 
 
@@ -109,7 +110,11 @@ export class CadastrarProfessorPage {
 
   carrega() {
 
+
     if(!(this.id == "" || this.id == undefined)){
+
+    this.mostrar = true;
+
 
       let loading = this.loadingCtrl.create({
         content: 'Carregando...'
@@ -171,6 +176,7 @@ export class CadastrarProfessorPage {
     this.professor.imagem = this.imagem;
     this.professor.dataNascimento = this.dataNascimento;
     this.professor.idade = this.idade;
+    this.professor.professorId = this.professorId;
 
     this.basepath = "http://localhost:8090/professor/update/";
     this.save = false;

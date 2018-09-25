@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar >
+
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button> 
+        <ion-title>
+            Perfil
+            <div class="notifications">
+              <ion-icon name="notifications"></ion-icon>
+            </div>
+            <ion-icon name="contact"></ion-icon>
+          </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content></ion-content>
+
+<ion-content padding   >
+
+    
+
+    <ion-card>
+        <img src="https://www.comboinfinito.com.br/principal/wp-content/uploads/2018/07/naruto-boruto.jpg"/>
+        <ion-card-content>
+          <ion-card-title>
+            Minhas informações:
+          </ion-card-title>
+          
+          <ion-item>
+              <ion-label floating>Nome</ion-label>
+              <ion-input type="text" [(ngModel)]='username'></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Nome Completo</ion-label>
+              <ion-input type="text" [(ngModel)]='fullusername'></ion-input>
+          </ion-item>
+            
+          <ion-item>
+              <ion-label>Data de Nascimento</ion-label>
+              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+          </ion-item>
+
+
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>

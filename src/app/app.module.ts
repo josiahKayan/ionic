@@ -21,6 +21,12 @@ import { CadastrarTagPage } from '../pages/cadastrar-tag/cadastrar-tag';
 import { TagPage } from '../pages/tag/tag';
 import { CursoServiceProvider } from '../providers/curso-service/curso-service';
 import { UsuarioPage } from '../pages/usuario/usuario';
+import { LoginPage} from '../pages/login/login';
+import { HomeProfessorPage } from '../pages/home-professor/home-professor';
+import { TurmasPage } from '../pages/turmas/turmas';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { TurmasComponent } from '../components/turmas/turmas';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +41,12 @@ import { UsuarioPage } from '../pages/usuario/usuario';
     CadastrarCursoPage,
     CadastrarProfessorPage,
     CadastrarTagPage,
-    UsuarioPage
+    UsuarioPage,
+    LoginPage,
+    HomeProfessorPage,
+    TurmasPage,
+    PerfilPage,
+    TurmasComponent
   ],
   imports: [
     BrowserModule,
@@ -55,13 +66,19 @@ import { UsuarioPage } from '../pages/usuario/usuario';
     CadastrarCursoPage,
     CadastrarProfessorPage,
     CadastrarTagPage,
-    UsuarioPage
+    UsuarioPage,
+    LoginPage,
+    HomeProfessorPage,
+    TurmasPage,
+    PerfilPage,
+    TurmasComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CursoServiceProvider,
+    CursoServiceProvider
+
     // RedditServiceProvider,
 
     // WeatherProvider

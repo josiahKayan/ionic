@@ -1,0 +1,29 @@
+
+
+<ion-header>
+    <ion-toolbar>
+  
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+          </button> 
+  
+      <ion-title>
+        Lista de Turmas
+        <div class="notifications">
+          <ion-icon name="notifications"></ion-icon>
+        </div>
+        <ion-icon name="contact"></ion-icon>
+      </ion-title>
+    
+       
+    
+    </ion-toolbar>
+    
+  
+  </ion-header>
+
+<ion-list>
+    <button ion-item *ngFor="let turma of turmas" (click)="itemSelected(turma)">
+      {{ turma }}
+    </button>  
+  </ion-list>
