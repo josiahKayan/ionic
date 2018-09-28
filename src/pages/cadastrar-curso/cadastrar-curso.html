@@ -33,26 +33,31 @@
 
   </ion-list>
   
-  <div padding [hidden]="save">
-    <button block (click)="salvarCurso()">Adicionar</button>
-  </div>
 
-  <div padding [hidden]="edit">
-    <button block (click)="editarCurso(cursoId)">Salvar Edição</button>
-  </div>
 
   <ion-label>Turmas</ion-label>
   <ion-list inset>
-            <button ion-item> NES</button>
-            <button ion-item> Nintendo64</button>
-            <button ion-item> PlayStation</button>
-            <button ion-item> SNES</button>
+    <ion-item *ngFor="let turma of turmas; let i = index;">
+      {{ turma.NomeTurma }} - {{turma.TurmaId}}
+     <button ion-button clear item-end (click)="detalhar(turma.TurmaId)">Detalhes</button>
+     <button ion-button clear item-end (click)="excluir(turma.TurmaId,i);">Excluir</button>
+   </ion-item>
   </ion-list> 
 
+
+
+
   <ion-fab right bottom>
-      <button ion-fab color="primary" (click)="novaTurma()">+</button>
+      <button ion-fab color="primary" text="Nova Turma" (click)="novaTurma()">+</button>
     </ion-fab>
 
+    <div padding [hidden]="true" >
+      <button ion-button block (click)="salvarCurso()">Adicionar</button>
+    </div>
+  
+    <div padding [hidden]="false" >
+      <button class="button-salvar" ion-button block  (click)="editarCurso(cursoId)">Salvar Edição</button>
+    </div>
 </ion-content>
 
   

@@ -33,6 +33,10 @@ export class CursoPage {
     
   }
 
+  ionViewDidLoad(){
+    this.fetchContent();
+  }
+
   fetchContent ():void {
 
     let loading = this.loadingCtrl.create({

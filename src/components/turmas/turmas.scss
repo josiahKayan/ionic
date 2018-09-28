@@ -1,5 +1,15 @@
-turmas {
+.turmas {
 
-    $modal-inset-box-shadow-color: rgba(0, 0, 0, .6);
+    .modal-backdrop-bg {
+        transition: opacity 300ms ease-in-out;
+        -webkit-transition: opacity 300ms ease-in-out;
+        background-color: #000;
+        opacity: 0;
+    }
+    
+    .active .modal-backdrop-bg {
+        opacity: 0.5;
+    }
 
+    
 }

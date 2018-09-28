@@ -2,58 +2,69 @@
 
 <ion-header>
     <ion-toolbar>
-  
-          
+        
       <ion-title>
         Lista de Turmas
-        <div class="notifications">
-          <ion-icon name="notifications"></ion-icon>
-        </div>
-        <ion-icon name="contact"></ion-icon>
+        
+        <ion-icon name="md-close" (click)="dismiss()"></ion-icon>
       </ion-title>
-    
-       
-    
-    </ion-toolbar>
-    
-  
-  </ion-header>
 
-<ion-list class="modal-inset-box-shadow-color">
+
+    </ion-toolbar>    
+</ion-header>
+
+<ion-list   class="modal-inset-box-shadow-color">
 
     <ion-item>
-
     </ion-item>
     <ion-item>
-      
-      </ion-item>
+    </ion-item>
     <ion-item>
         <ion-label stacked>Nome</ion-label>
         <ion-input type="text" [(ngModel)]='nome'></ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Data Início</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="dataInicial"></ion-datetime>
     </ion-item>
     <ion-item>
         <ion-label>Data Término</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="dataFinal"></ion-datetime>
     </ion-item>
     <ion-item>
         <ion-label stacked>Hora Inicial</ion-label>
-        <ion-input type="text" [(ngModel)]='nome'></ion-input>
+        <ion-input type="text" [(ngModel)]='horaInicial'></ion-input>
     </ion-item>
     <ion-item>
         <ion-label stacked>Hora Final</ion-label>
-        <ion-input type="text" [(ngModel)]='nome'></ion-input>
+        <ion-input type="text" [(ngModel)]='horaFinal'></ion-input>
     </ion-item>
 
-    <!-- <div padding [hidden]="save">
-        <button block (click)="salvarCurso()">Adicionar</button>
-      </div>
-    
-      <div padding [hidden]="edit">
-        <button block (click)="editarCurso()">Salvar Edição</button>
-      </div> -->
+    <ion-list>
+      <ion-item>
+        <ion-label>Professores</ion-label>
+        <ion-select [(ngModel)]="selected" (ionChange)="onSelectChange($event)">
 
+          <ion-option *ngFor="let professor of professores" [value]="professor" >{{professor.NomeCompleto}}</ion-option>
+          
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <!-- <div padding [hidden]="save"> -->
+            <button  (click)="salvarNovaTurma()">Adicionar Turma</button>
+          <!-- </div> -->
+        </ion-item>
+        
+        <ion-item>
+          <!-- <div padding [hidden]="edit"> -->
+            <button block (click)="editarCurso()">Salvar Edição</button>
+          <!-- </div> -->
+        </ion-item>
+    
+
+    </ion-list>
+
+
+    
 </ion-list>

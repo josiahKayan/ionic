@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController, ViewController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http, HttpModule, Headers } from '@angular/http';
 import {CursoPage} from '../curso/curso';
@@ -14,8 +14,9 @@ import { TurmasComponent } from '../../components/turmas/turmas';
 
 export class CadastrarCursoPage {
   basepath = "/addcurso";
-
+  basePathTurmas = "http://localhost:8090/turma/GetTurmasPeloCursoId/";
   public curso: Curso;
+  public turmas:Array<Turmas>;
   nome: string;
   descricao: string;
   ativo:boolean;
@@ -24,14 +25,17 @@ export class CadastrarCursoPage {
   public edit:boolean;
   public cursoId:string;
   modal:ModalController ;
+  view : ViewController;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController, modal: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController, modal: ModalController , 
+   viewCt : ViewController) {
       this.basepath = "http://localhost:8090/curso/addcurso";
       this.save = false;
       this.edit = true;
       this.id = navParams.get('id');
       this.carrega();
       this.modal = modal;
+      this.view = viewCt;
   }
 
   novaTurma(){
@@ -39,8 +43,12 @@ export class CadastrarCursoPage {
   }
 
   presentTurmaModal() {
-    let turmaModal = this.modal.create(TurmasComponent);
+    let turmaModal = this.modal.create(TurmasComponent, { cursoId: this.id });
     turmaModal.present();
+  }
+
+  dismiss() {
+    this.view.dismiss();
   }
 
   salvarCurso() {
@@ -119,6 +127,20 @@ export class CadastrarCursoPage {
             this.cursoId = objCurso.CursoId;
             this.save = true;
             this.edit = false;
+
+            console.log('Chamar turmas');
+
+            this.http.get( this.basePathTurmas + this.cursoId, {headers: headers}  )
+            .map(
+              res => res.json()
+            )
+            .subscribe(
+              (t) =>{
+
+                  this.turmas = t;
+              }
+            );
+
             loading.dismiss();
           
         }
@@ -165,4 +187,20 @@ export class Curso {
   nome: string;
   descricao: string;
   ativo: boolean;
+}
+
+export class Turmas{
+  AlunoLista:Array<any>;
+  TurmaId: number;
+  NomeTurma: string;
+  DataInicio: string;
+  DataTermino: string;
+  HoraInicial: string;
+  HoraFinal: string;
+  ProfessorId: number;
+  CursoId: number;
+  Professor: any;
+  Curso: any;
+  PresencaLista: Array<any>;
+
 }
