@@ -17,8 +17,18 @@ export class TabsPage {
   tab3Root = ProfessorPage;
   tab5Root = AlunoPage;
   tab6Root = TagPage;
+  public showNavbar: boolean = false;
+
 
   constructor() {
 
+    console.log('Ta aqui');
+
+    this.showNavbar = false;
+
+
   }
+
+
+
 }

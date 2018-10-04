@@ -15,14 +15,36 @@ export class LoginPage {
   public username : string ;
   public password : string ;
   public basepath = "/usuario";
+  public showNavbar : boolean ;
+  public tabs : TabsPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http) {
 
     this.basepath = "http://localhost:8090/usuario/login";
+
+    this.showNavbar = navParams.get('login');
+
+    if(  this.showNavbar == false ){
+      this.showNavbar = false;
+    }
+    else{
+      this.showNavbar = false;
+    }
+;
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    let elements = document.querySelectorAll(".tabbar");
+
+    if (elements != null) {
+        Object.keys(elements).map((key) => {
+            elements[key].style.display = 'none';
+        });
+    }
+
+  
   }
 
   public login(){

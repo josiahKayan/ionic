@@ -4,7 +4,7 @@
     <ion-toolbar>
         
       <ion-title>
-        Lista de Turmas
+        Nova Turma
         
         <ion-icon name="md-close" (click)="dismiss()"></ion-icon>
       </ion-title>
@@ -45,20 +45,20 @@
         <ion-label>Professores</ion-label>
         <ion-select [(ngModel)]="selected" (ionChange)="onSelectChange($event)">
 
-          <ion-option *ngFor="let professor of professores" [value]="professor" >{{professor.NomeCompleto}}</ion-option>
+          <ion-option *ngFor="let professor of professores" [value]="professor" [selected]="professor.ProfessorId == selectedProfesor" >{{professor.NomeCompleto}}</ion-option>
           
         </ion-select>
       </ion-item>
 
       <ion-item>
         <!-- <div padding [hidden]="save"> -->
-            <button  (click)="salvarNovaTurma()">Adicionar Turma</button>
+            <button [hidden]="save" class="button-salvar" ion-button block round  (click)="salvarNovaTurma()">Adicionar Turma</button>
           <!-- </div> -->
         </ion-item>
         
         <ion-item>
           <!-- <div padding [hidden]="edit"> -->
-            <button block (click)="editarCurso()">Salvar Edição</button>
+            <button [hidden]="edit" class="button-salvar" ion-button block round (click)="editarTurma(turmaId)">Salvar Edição</button>
           <!-- </div> -->
         </ion-item>
     

@@ -3,6 +3,7 @@
 
   <ion-navbar>
     <ion-title>Novo Curso</ion-title>
+    <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
   </ion-navbar>
 
 </ion-header>
@@ -39,7 +40,7 @@
   <ion-list inset>
     <ion-item *ngFor="let turma of turmas; let i = index;">
       {{ turma.NomeTurma }} - {{turma.TurmaId}}
-     <button ion-button clear item-end (click)="detalhar(turma.TurmaId)">Detalhes</button>
+     <button ion-button clear item-end (click)="detalhar(turma.TurmaId,turma.ProfessorId)">Detalhes</button>
      <button ion-button clear item-end (click)="excluir(turma.TurmaId,i);">Excluir</button>
    </ion-item>
   </ion-list> 

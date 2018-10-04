@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { Component,ViewChild  } from '@angular/core';
+import { IonicPage, NavController, NavParams,ViewController, AlertController,Content  } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http,HttpModule,Headers } from '@angular/http';
 import { CadastrarCursoPage } from '../cadastrar-curso/cadastrar-curso';
 import 'rxjs/add/operator/map';
+import { LoginPage } from '../login/login';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 export class Curso{
@@ -22,16 +24,24 @@ export class CursoPage {
   
   curso: Curso ;
   delete = "/delete";
+  public showNavbar: boolean = false;
   
+  alertC: AlertController;
+
   public cursos : Array<any>;
   private url: string = "http://localhost:8090/curso/cursos";  
 
-  constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
+  constructor( public viewCtrl: ViewController,alertCtrl: AlertController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
     
     this.fetchContent();
     this.delete = 'http://localhost:8090/curso/';
-    
+    this.alertC = alertCtrl;
+    this.showNavbar = false;
   }
+
+ 
+
+ 
 
   ionViewDidLoad(){
     this.fetchContent();
@@ -103,6 +113,39 @@ export class CursoPage {
       
   
   }
+
+  showConfirm() {
+    const confirm = this.alertC.create({
+      title: 'Sair',
+      message: 'Você deseja realmente SAIR?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Sair',
+          handler: () => {
+            console.log('Agree clicked');
+  
+            // this.app.getRootNav().setRoot( LoginPage );
+            // let rootNav = getRootNav(this.navCtrl);
+            // rootNav.setRoot(LoginPage);
+            //this.menu.close();
+            
+            this.navCtrl.setRoot(LoginPage  , { login: false} );
+
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+
+
 
   // itemSelected (feed):void {
   //   alert(feed.data.url);

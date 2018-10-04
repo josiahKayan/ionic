@@ -1,10 +1,13 @@
-<ion-tabs>
+
+<ion-tabs  [hidden]="showNavbar" >
+  
   <!-- <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab> -->
-  <ion-tab [root]="tab2Root" tabTitle="Cursos" tabIcon="cursos"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Professores" tabIcon="professores"></ion-tab>
+  <ion-tab [hidden]="showNavbar"  [root]="tab2Root" tabTitle="Cursos" tabIcon="cursos"></ion-tab>
+  <ion-tab [hidden]="showNavbar"  [root]="tab3Root" tabTitle="Professores" tabIcon="professores"></ion-tab>
   <!-- <ion-tab [root]="tab4Root" tabTitle="Settings" tabIcon="ettings"></ion-tab> -->
-  <ion-tab [root]="tab5Root" tabTitle="Alunos" tabIcon="alunos"></ion-tab>
-  <ion-tab [root]="tab6Root" tabTitle="Tags" tabIcon="tags"></ion-tab>
+  <ion-tab  [hidden]="showNavbar" [root]="tab5Root" tabTitle="Alunos" tabIcon="alunos"></ion-tab>
+  <ion-tab  [hidden]="showNavbar" [root]="tab6Root" tabTitle="Tags" tabIcon="tags"></ion-tab>
+
 </ion-tabs>
 
 
@@ -12,6 +15,7 @@
 
   <ion-navbar>
     <ion-title>Cursos</ion-title>
+    <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
   </ion-navbar>
 
 </ion-header>
