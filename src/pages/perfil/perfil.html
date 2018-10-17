@@ -39,9 +39,14 @@
             
           <ion-item>
               <ion-label>Data de Nascimento</ion-label>
-              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myBirthday"></ion-datetime>
           </ion-item>
 
+          
+        
+          <div padding [hidden]="false" >
+            <button class="button-salvar" ion-button block  (click)="salvarPerfil()">Salvar Edição</button>
+          </div>
 
         </ion-card-content>
       </ion-card>
