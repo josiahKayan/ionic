@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App,Platform,AlertController,NavController ,MenuController } from 'ionic-angular';
+import { App,Platform,AlertController,NavController ,MenuController , Nav} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -22,9 +22,10 @@ export class MyApp {
   alertCtrl: AlertController;
   navCtrl: NavController;
   menu:MenuController;
+  id:string;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, alertCtrl: AlertController, app: App
-  ,menu :MenuController) {
+  ,menu :MenuController ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -35,6 +36,9 @@ export class MyApp {
       this.menu = menu;
       splashScreen.hide();
     });
+
+
+
   }
 
 
@@ -67,8 +71,11 @@ export class MyApp {
     });
     confirm.present();
   }
+  
 
   abrirPerfil(){
+
+    var i = this.id;
     this.menu.close();
     this.navCtrl.push(PerfilPage);
   }

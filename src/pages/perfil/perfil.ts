@@ -30,7 +30,7 @@ export class PerfilPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
 
-    this.id = navParams.get('id');
+    this.id = localStorage.get('id');
     this.carrega();
     this.save = false;
     this.edit = true;

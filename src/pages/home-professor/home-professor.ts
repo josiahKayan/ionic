@@ -10,7 +10,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomeProfessorPage {
 
+
+  id : string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.id = navParams.get('id');
+
+    localStorage.setItem("id",this.id);
+
   }
 
   ionViewDidLoad() {

@@ -53,7 +53,7 @@ export class LoginPage {
 
     usuario.email = this.username;
     usuario.senha = this.password;
-
+    
     let headers = new Headers();
     headers.append('Access-Control-Allow-Origin' , '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
@@ -75,7 +75,7 @@ export class LoginPage {
             }
             //Professor
             else if(result.Perfil == 1){
-              this.navCtrl.push(HomeProfessorPage);
+              this.navCtrl.push(HomeProfessorPage, { id : result.UsuarioId});
             }
             //Aluno
             else if(result.Perfil == 0){
