@@ -2,7 +2,6 @@
 
 <ion-header>
     <ion-toolbar>
-  
           <button ion-button menuToggle>
               <ion-icon name="menu"></ion-icon>
           </button> 
@@ -14,16 +13,23 @@
         </div>
         <ion-icon name="contact"></ion-icon>
       </ion-title>
-    
-       
-    
-    </ion-toolbar>
-    
-  
-  </ion-header>
+    </ion-toolbar>  
+</ion-header>
 
-<ion-list>
-    <button ion-item *ngFor="let turma of turmas" (click)="itemSelected(turma)">
+<ion-item></ion-item>
+<ion-item></ion-item>
+
+<ion-card>
+<ion-list  *ngFor="let t of turmasList" (click)="abreLista(t.TurmaId)">
+    <!-- <button ion-item *ngFor="let turma of turmas" (click)="itemSelected(turma)">
       {{ turma }}
-    </button>  
+    </button>   -->
+    <ion-card>
+      <ion-item>
+        {{t.NomeTurma}}
+        <h2>{{t.HoraInicial}}</h2>
+        <h3>{{t.HoraFinal}}</h3>
+      </ion-item>
+    </ion-card>
   </ion-list>
+</ion-card>

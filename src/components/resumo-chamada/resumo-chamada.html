@@ -1,0 +1,62 @@
+
+
+<ion-header>
+    <ion-toolbar>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+          </button> 
+  
+      <ion-title>
+        Lista de Chamada
+        <div class="notifications">
+            <ion-icon name="notifications"></ion-icon>
+          </div>
+          <ion-icon name="contact"></ion-icon>
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-item></ion-item>
+<ion-item></ion-item>
+
+<ion-card>
+<ion-card>
+  <!-- Float the icon left -->
+  <button ion-button icon-start>
+      <ion-icon name="home"> Presentes</ion-icon>
+  </button>
+</ion-card>
+
+  <ion-card>
+      <ion-list *ngFor="let l of ListaPresentes" > 
+        <ion-item>
+          <ion-icon name="football" item-start large></ion-icon>
+          <h2>{{l.Aluno.NomeCompleto}}</h2>
+          </ion-item>
+      </ion-list>
+    </ion-card>
+
+</ion-card>
+
+
+<ion-card>
+    <ion-card>
+      <button ion-button icon-start>
+        <ion-icon name="home"> Faltosos</ion-icon>
+      </button>
+    </ion-card>
+
+    <ion-card>
+      <ion-list *ngFor="let f of listaFaltosos" > 
+        <ion-item>
+          <ion-icon name="football" item-start large></ion-icon>
+          <h2>{{f.NomeCompleto}}</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+</ion-card>
+  
+  
+ 
+  
+  

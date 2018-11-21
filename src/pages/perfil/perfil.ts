@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 /**
  * Generated class for the PerfilPage page.
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
+ * See https://ionicframework.''''''''''''''''''''''''''''''''''com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
@@ -30,7 +30,8 @@ export class PerfilPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
 
-    this.id = localStorage.get('id');
+    let idd =localStorage.getItem('id');
+    this.id = idd;
     this.carrega();
     this.save = false;
     this.edit = true;
@@ -72,12 +73,14 @@ export class PerfilPage {
       .subscribe(
         (result) => {
 
-            var objPerfil = {"nome":"","nomeCompleto":"","dataNascimento":""};
+            var objPerfil = {"Nome":"","NomeCompleto":"","DataNascimento":""};
             objPerfil = result;
+
             
-            this.username = objPerfil.nome;
-            this.fullusername = objPerfil.nomeCompleto;
-            this.myBirthday = objPerfil.dataNascimento;
+            
+            this.username = objPerfil.Nome;
+            this.fullusername = objPerfil.NomeCompleto;
+            this.myBirthday = objPerfil.DataNascimento;
             this.save = true;
             this.edit = false;
 
@@ -91,6 +94,10 @@ export class PerfilPage {
   }
 
  
+
+  salvarPerfil(){
+    alert('top');
+  }
 
 }
 

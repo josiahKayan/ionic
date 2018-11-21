@@ -26,6 +26,8 @@ import { HomeProfessorPage } from '../pages/home-professor/home-professor';
 import { TurmasPage } from '../pages/turmas/turmas';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { TurmasComponent } from '../components/turmas/turmas';
+import {ListaChamadaComponent} from '../components/lista-chamada/lista-chamada';
+import {ResumoChamadaComponent} from '../components/resumo-chamada/resumo-chamada';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { TurmasComponent } from '../components/turmas/turmas';
     HomeProfessorPage,
     TurmasPage,
     PerfilPage,
-    TurmasComponent
+    TurmasComponent,
+    ListaChamadaComponent,
+    ResumoChamadaComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,9 @@ import { TurmasComponent } from '../components/turmas/turmas';
     HomeProfessorPage,
     TurmasPage,
     PerfilPage,
-    TurmasComponent
+    TurmasComponent,
+    ListaChamadaComponent,
+    ResumoChamadaComponent
   ],
   providers: [
     StatusBar,

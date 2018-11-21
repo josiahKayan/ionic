@@ -75,6 +75,9 @@ export class LoginPage {
             }
             //Professor
             else if(result.Perfil == 1){
+
+              localStorage.setItem('id',result.UsuarioId);
+
               this.navCtrl.push(HomeProfessorPage, { id : result.UsuarioId});
             }
             //Aluno

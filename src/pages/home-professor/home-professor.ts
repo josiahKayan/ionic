@@ -17,7 +17,9 @@ export class HomeProfessorPage {
 
     this.id = navParams.get('id');
 
-    localStorage.setItem("id",this.id);
+    if(this.id != undefined){
+      localStorage.setItem("id",this.id);
+    }
 
   }
 

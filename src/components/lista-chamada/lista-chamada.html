@@ -1,0 +1,50 @@
+
+
+<ion-header>
+    <ion-toolbar>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+          </button> 
+  
+      <ion-title>
+        Histórico de Chamadas
+        <div class="notifications">
+            <ion-icon name="notifications"></ion-icon>
+          </div>
+          <ion-icon name="contact"></ion-icon>
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-item></ion-item>
+<ion-item></ion-item>
+
+<ion-card>
+<!-- Float the icon left -->
+<button ion-button icon-start (click)="confirmNewList()">
+    <ion-icon name="home"> Nova Lista</ion-icon>
+  </button>
+  
+  <!-- Float the icon right -->
+  <button ion-button icon-start>
+    <ion-icon name="home"> Relatório</ion-icon>
+  </button>
+  
+  <!-- Only icon (no text) -->
+  <button ion-button icon-start>
+      <ion-icon name="home"> Gerar QRCODE</ion-icon>
+    </button>
+</ion-card>
+
+<ion-card>
+  <ion-list *ngFor="let p of listaPresenca" (click)="abreListaChamada(p.ListaPresencaId)"> 
+    <ion-item>
+      <ion-icon name="football" item-start large></ion-icon>
+      <h2>{{p.Dia}} - {{p.Mes}} - {{p.Ano}}</h2>
+      <p>{{calculaDia(p.Dia,p.Mes,p.Ano)}} , {{p.Dia}}  de {{calculaMes(p.Mes)}} de {{p.Ano}}</p>
+    </ion-item>
+  </ion-list>
+  
+  </ion-card>
+  
+  
