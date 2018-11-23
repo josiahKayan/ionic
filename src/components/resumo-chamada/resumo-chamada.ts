@@ -28,13 +28,13 @@ export class ResumoChamadaComponent {
     this.idTurma = navParams.get('idTurma');
     this.alertCtrl = alertCtrl;
 
-    this.carregaListaPresentes();
+    this.carregaListaPresentes(this.idPresenca,this.idTurma);
 
 
   }
 
 
-  carregaListaPresentes(){
+  carregaListaPresentes(idPresenca :number,idTurma:number){
 
     if((this.idPresenca != 0 || this.idPresenca != undefined)){
 
@@ -52,7 +52,7 @@ export class ResumoChamadaComponent {
 
       this.basepath = "http://localhost:8090/resumo-presenca/";
       
-      this.http.get(this.basepath+'/GetResumoListaPresencaByIdPresencalista/'+this.idPresenca  ,{ headers: headers })
+      this.http.get(this.basepath+'/GetResumoListaPresencaByIdPresencalista/'+idPresenca  ,{ headers: headers })
       .map(
         res => res.json()
       )
@@ -60,7 +60,7 @@ export class ResumoChamadaComponent {
         (result) => {
 
           this.ListaPresentes = result;
-          this.carregaListaFaltosos();
+          this.carregaListaFaltosos(idTurma,idPresenca);
 
           loading.dismiss();
           
@@ -71,7 +71,7 @@ export class ResumoChamadaComponent {
 
   }
 
-  carregaListaFaltosos(){
+  carregaListaFaltosos(idTurma : number, idPresenca: number){
 
     if((this.idTurma != 0 || this.idTurma != undefined)){
 
@@ -89,7 +89,7 @@ export class ResumoChamadaComponent {
 
       this.basepath = "http://localhost:8090/resumo-presenca/";
       
-      this.http.get(this.basepath+'/GetResumoListaFaltosos/'+this.idPresenca+'/'  +this.idTurma  ,{ headers: headers })
+      this.http.get(this.basepath+'/GetResumoListaFaltosos/'+idPresenca+'/'  +idTurma  ,{ headers: headers })
       .map(
         res => res.json()
       )

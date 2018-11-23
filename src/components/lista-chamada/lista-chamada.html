@@ -24,16 +24,17 @@
 <button ion-button icon-start (click)="confirmNewList()">
     <ion-icon name="home"> Nova Lista</ion-icon>
   </button>
-  
-  <!-- Float the icon right -->
-  <button ion-button icon-start>
-    <ion-icon name="home"> Relatório</ion-icon>
-  </button>
-  
+    
   <!-- Only icon (no text) -->
-  <button ion-button icon-start>
+  <button ion-button icon-start (click)="geraQRCode()">
       <ion-icon name="home"> Gerar QRCODE</ion-icon>
     </button>
+
+  <!-- Float the icon right -->
+  <button ion-button icon-start>
+      <ion-icon name="home"> Relatório</ion-icon>
+    </button>
+
 </ion-card>
 
 <ion-card>

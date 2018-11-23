@@ -76,7 +76,6 @@ export class TurmasPage {
 
   abreLista(idTurma : number){
 
-      alert(idTurma);
 
       this.nav.push(ListaChamadaComponent, { id : idTurma} );
   }

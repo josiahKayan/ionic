@@ -21,6 +21,7 @@ export class ListaChamadaComponent {
   nav : NavController;
   alertCtrl: AlertController;
 
+
   
   protected listaPresenca: Array<any>; 
 
@@ -82,10 +83,16 @@ export class ListaChamadaComponent {
     this.nav.push(ResumoChamadaComponent, { idPresenca : idPresenca,  idTurma: this.idTurma} );
 }
 
+  geraQRCode(){
+   
+    console.log('Gerando QRCode');
+
+  }
+
 
   calculaDia(dia:number,mes:number,ano:number){
     var d = new Date(mes+'-'+dia+'-'+ano);
-    var n = d.getDay();
+    var n = d.getDay() - 1;
     let arrayWeek = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
     var ttt =  arrayWeek[n];
     return ttt ;
@@ -93,7 +100,7 @@ export class ListaChamadaComponent {
 
   calculaMes( mes:number ){
     let arrayMonth = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-    var ttt =  arrayMonth[mes];
+    var ttt =  arrayMonth[mes-1];
     return ttt ;
   }
 
@@ -114,16 +121,26 @@ export class ListaChamadaComponent {
           handler: () => {
             console.log('Agree clicked');
       
-            // let headers = new Headers();
-            // headers.append('Access-Control-Allow-Origin' , '*');
-            // headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-            // headers.append('Accept','application/json');
-            // headers.append('content-type','application/json');
+            let headers = new Headers();
+            headers.append('Access-Control-Allow-Origin' , '*');
+            headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+            headers.append('Accept','application/json');
+            headers.append('content-type','application/json');
 
-            // this.http.post(this.basepath, JSON.stringify(usuario), { headers: headers })
-            //   .map(
-            //     res => res.json()
-            //   )
+            this.basepath = "http://localhost:8090/lista-presenca/insertListaPresenca/";
+
+            this.http.post(this.basepath+this.idTurma, { headers: headers })
+              .map(
+                res => res.json()
+              )
+              .subscribe(
+                (result) => {
+                  
+                    this.nav.push(ListaChamadaComponent, { id : this.idTurma} );
+
+
+                }
+              );
 
 
           }
