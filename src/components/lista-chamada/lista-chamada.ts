@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { Http, HttpModule, Headers } from '@angular/http';
 import { ResumoChamadaComponent } from '../resumo-chamada/resumo-chamada';
+import { GeraQrcodeComponent } from '../gera-qrcode/gera-qrcode';
 
 /**
  * Generated class for the ListaChamadaComponent component.
@@ -20,7 +21,6 @@ export class ListaChamadaComponent {
   private basepath: string;
   nav : NavController;
   alertCtrl: AlertController;
-
 
   
   protected listaPresenca: Array<any>; 
@@ -85,8 +85,8 @@ export class ListaChamadaComponent {
 
   geraQRCode(){
    
-    console.log('Gerando QRCode');
-
+    this.nav.push(GeraQrcodeComponent, {   idTurma: this.idTurma} );
+    
   }
 
 

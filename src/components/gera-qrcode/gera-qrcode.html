@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+          </button> 
+  
+      <ion-title>
+        QR Code
+        <div class="notifications">
+            <ion-icon name="notifications"></ion-icon>
+          </div>
+          <ion-icon name="contact"></ion-icon>
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-item></ion-item>
+<ion-item></ion-item>
+
+<ion-content padding>
+    
+    <ion-card >
+      <ion-item>
+        <ion-input type="text" placeholder="Chamada" >
+        </ion-input>
+      </ion-item>
+      <qrcode [qrdata]="qrData" [size]="256" [level]="'M'"></qrcode>
+      
+      
+    </ion-card>
+   
+  </ion-content>

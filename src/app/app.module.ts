@@ -29,6 +29,10 @@ import { TurmasComponent } from '../components/turmas/turmas';
 import {ListaChamadaComponent} from '../components/lista-chamada/lista-chamada';
 import {ResumoChamadaComponent} from '../components/resumo-chamada/resumo-chamada';
 
+import {GeraQrcodeComponent} from '../components/gera-qrcode/gera-qrcode';
+import {LeituraQrcodeComponent} from '../components/leitura-qrcode/leitura-qrcode';
+import { QRCodeModule } from 'angularx-qrcode';
+
 
 @NgModule({
   declarations: [
@@ -50,11 +54,14 @@ import {ResumoChamadaComponent} from '../components/resumo-chamada/resumo-chamad
     PerfilPage,
     TurmasComponent,
     ListaChamadaComponent,
-    ResumoChamadaComponent
+    ResumoChamadaComponent,
+    LeituraQrcodeComponent,
+    GeraQrcodeComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    QRCodeModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -77,7 +84,9 @@ import {ResumoChamadaComponent} from '../components/resumo-chamada/resumo-chamad
     PerfilPage,
     TurmasComponent,
     ListaChamadaComponent,
-    ResumoChamadaComponent
+    ResumoChamadaComponent,
+    LeituraQrcodeComponent,
+    GeraQrcodeComponent
   ],
   providers: [
     StatusBar,
