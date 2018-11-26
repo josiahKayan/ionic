@@ -32,7 +32,9 @@ import {ResumoChamadaComponent} from '../components/resumo-chamada/resumo-chamad
 import {GeraQrcodeComponent} from '../components/gera-qrcode/gera-qrcode';
 import {LeituraQrcodeComponent} from '../components/leitura-qrcode/leitura-qrcode';
 import { QRCodeModule } from 'angularx-qrcode';
-
+import { Geolocation } from '@ionic-native/geolocation';
+import {HomeAlunoPage} from '../pages/home-aluno/home-aluno';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     ListaChamadaComponent,
     ResumoChamadaComponent,
     LeituraQrcodeComponent,
-    GeraQrcodeComponent
+    GeraQrcodeComponent,
+    HomeAlunoPage
   ],
   imports: [
     BrowserModule,
@@ -86,13 +89,16 @@ import { QRCodeModule } from 'angularx-qrcode';
     ListaChamadaComponent,
     ResumoChamadaComponent,
     LeituraQrcodeComponent,
-    GeraQrcodeComponent
+    GeraQrcodeComponent,
+    HomeAlunoPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CursoServiceProvider
+    CursoServiceProvider,
+    Geolocation,
+    QRScanner
 
     // RedditServiceProvider,
 

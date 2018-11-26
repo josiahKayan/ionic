@@ -8,6 +8,7 @@ import { ListaChamadaComponent } from './lista-chamada/lista-chamada';
 import { ResumoChamadaComponent } from './resumo-chamada/resumo-chamada';
 import { GeraQrcodeComponent } from './gera-qrcode/gera-qrcode';
 import { LeituraQrcodeComponent } from './leitura-qrcode/leitura-qrcode';
+import { HomeAlunoComponent } from './home-aluno/home-aluno';
 @NgModule({
 	declarations: [CadastrarProfessorComponent,
     CadastrarCursoComponent,
@@ -17,7 +18,8 @@ import { LeituraQrcodeComponent } from './leitura-qrcode/leitura-qrcode';
     ListaChamadaComponent,
     ResumoChamadaComponent,
     GeraQrcodeComponent,
-    LeituraQrcodeComponent],
+    LeituraQrcodeComponent,
+    HomeAlunoComponent],
 	imports: [],
 	exports: [CadastrarProfessorComponent,
     CadastrarCursoComponent,
@@ -27,6 +29,7 @@ import { LeituraQrcodeComponent } from './leitura-qrcode/leitura-qrcode';
     ListaChamadaComponent,
     ResumoChamadaComponent,
     GeraQrcodeComponent,
-    LeituraQrcodeComponent]
+    LeituraQrcodeComponent,
+    HomeAlunoComponent]
 })
 export class ComponentsModule {}

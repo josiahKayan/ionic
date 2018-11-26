@@ -20,6 +20,14 @@
 <ion-item></ion-item>
 
 <ion-card>
+
+    <ion-card>
+        <!-- Float the icon left -->
+        <button ion-button icon-start (click)="marcar( )">
+            <ion-icon name="home"> Marcar</ion-icon>
+        </button>
+      </ion-card>
+
 <ion-card>
   <!-- Float the icon left -->
   <button ion-button icon-start>
@@ -31,7 +39,10 @@
       <ion-list *ngFor="let l of ListaPresentes" > 
         <ion-item>
           <ion-icon name="football" item-start large></ion-icon>
-          <h2>{{l.Aluno.NomeCompleto}}</h2>
+          <h2 [hidden]="!aluno">Você ainda não está presente hoje</h2>
+          <h2 *ngIf="aluno" [hidden]="aluno">{{l.Aluno.NomeCompleto}}</h2>
+
+
           </ion-item>
       </ion-list>
     </ion-card>
@@ -39,7 +50,7 @@
 </ion-card>
 
 
-<ion-card>
+<ion-card [hidden]="aluno">
     <ion-card>
       <button ion-button icon-start>
         <ion-icon name="home"> Faltosos</ion-icon>

@@ -21,17 +21,17 @@
 
 <ion-card>
 <!-- Float the icon left -->
-<button ion-button icon-start (click)="confirmNewList()">
+<button ion-button icon-start (click)="confirmNewList()" [hidden]="aluno" >
     <ion-icon name="home"> Nova Lista</ion-icon>
   </button>
     
   <!-- Only icon (no text) -->
-  <button ion-button icon-start (click)="geraQRCode()">
+  <button ion-button icon-start (click)="geraQRCode()" [hidden]="aluno">
       <ion-icon name="home"> Gerar QRCODE</ion-icon>
     </button>
 
   <!-- Float the icon right -->
-  <button ion-button icon-start>
+  <button ion-button icon-start (click)="relatorio()"  [hidden]="!aluno">
       <ion-icon name="home"> Relatório</ion-icon>
     </button>
 

@@ -64,6 +64,7 @@ export class MyApp {
             // let rootNav = getRootNav(this.navCtrl);
             // rootNav.setRoot(LoginPage);
             this.menu.close();
+            localStorage.clear();
             this.navCtrl.setRoot(LoginPage);
           }
         }

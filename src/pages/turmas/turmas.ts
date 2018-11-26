@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { Http, HttpModule, Headers } from '@angular/http';
 import { ListaChamadaComponent } from '../../components/lista-chamada/lista-chamada';
+import { dateSortValue } from 'ionic-angular/umd/util/datetime-util';
 
 /**
  * Generated class for the TurmasPage page.
@@ -78,6 +79,23 @@ export class TurmasPage {
 
 
       this.nav.push(ListaChamadaComponent, { id : idTurma} );
+  }
+
+
+  formataData(data: string){
+    var tValue = data.indexOf('T')+1 ; 
+    var finalLength = data.length ;
+
+    var final = data.slice(tValue,finalLength) ;
+    return final;
+  }
+
+  formataDataF(data: string){
+    var tValue = data.indexOf('T')+1 ; 
+    var finalLength = data.length ;
+
+    var final = data.slice(tValue,finalLength) ;
+    return final;
   }
 
 }

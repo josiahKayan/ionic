@@ -4,6 +4,7 @@ import { Http, HttpModule,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { TabsPage } from '../tabs/tabs';
 import { HomeProfessorPage } from '../home-professor/home-professor';
+import { HomeAlunoPage } from '../home-aluno/home-aluno';
 
 @IonicPage()
 @Component({
@@ -82,7 +83,9 @@ export class LoginPage {
             }
             //Aluno
             else if(result.Perfil == 0){
-              this.navCtrl.push(TabsPage);
+              localStorage.setItem('id',result.UsuarioId);
+
+              this.navCtrl.push(HomeAlunoPage, { id : result.UsuarioId});
             }
           }
           else{

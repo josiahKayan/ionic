@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,LoadingController,AlertController }
 import { Http, HttpModule, Headers } from '@angular/http';
 import { ResumoChamadaComponent } from '../resumo-chamada/resumo-chamada';
 import { GeraQrcodeComponent } from '../gera-qrcode/gera-qrcode';
+import { convertToView } from 'ionic-angular/umd/navigation/nav-util';
 
 /**
  * Generated class for the ListaChamadaComponent component.
@@ -21,13 +22,16 @@ export class ListaChamadaComponent {
   private basepath: string;
   nav : NavController;
   alertCtrl: AlertController;
-
+  aluno : boolean;
   
   protected listaPresenca: Array<any>; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController,alertCtrl: AlertController) {
 
     this.idTurma = navParams.get('id');
+
+    this.aluno = ( localStorage.getItem('aluno') == "true" ) ? true : false;
+     
     
     this.carregaListaTurma();
 
@@ -77,6 +81,9 @@ export class ListaChamadaComponent {
 
   }
 
+  relatorio(){
+    
+  }
 
   abreListaChamada(idPresenca : number){
 
