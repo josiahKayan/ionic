@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CursoServiceProvider {
 
-  private baseApiPath = "http://localhost:8090/curso/";
+  private baseApiPath = "http://192.168.0.12:8090/curso/";
   constructor(public http: HttpClient) {
     console.log('Hello MovieProvider Provider');
   }

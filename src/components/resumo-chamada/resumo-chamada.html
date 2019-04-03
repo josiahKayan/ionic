@@ -7,11 +7,9 @@
           </button> 
   
       <ion-title>
+            <div class="titulo">
         Lista de Chamada
-        <div class="notifications">
-            <ion-icon name="notifications"></ion-icon>
-          </div>
-          <ion-icon name="contact"></ion-icon>
+        </div>
       </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -19,55 +17,70 @@
 <ion-item></ion-item>
 <ion-item></ion-item>
 
+<ion-scroll scrollY="true">
+
 <ion-card>
 
     <ion-card>
         <!-- Float the icon left -->
-        <button ion-button icon-start (click)="marcar( )">
-            <ion-icon name="home"> Marcar</ion-icon>
+        <button ion-button icon-start (click)="marcar( )" class="marcar" [hidden]="marca">
+            <ion-icon name="qr-scanner">  Marcar</ion-icon>
+        </button>
+         <!-- Only icon (no text) -->
+        <button ion-button icon-start (click)="geraQRCode()" class="gerar" [hidden]="gera">
+            <ion-icon name="barcode">  Gerar QRCODE</ion-icon>
         </button>
       </ion-card>
 
+      
 <ion-card>
   <!-- Float the icon left -->
   <button ion-button icon-start>
-      <ion-icon name="home"> Presentes</ion-icon>
+      <ion-icon name="happy">   Presentes</ion-icon>
   </button>
 </ion-card>
 
   <ion-card>
       <ion-list *ngFor="let l of ListaPresentes" > 
         <ion-item>
-          <ion-icon name="football" item-start large></ion-icon>
-          <h2 [hidden]="!aluno">Você ainda não está presente hoje</h2>
-          <h2 *ngIf="aluno" [hidden]="aluno">{{l.Aluno.NomeCompleto}}</h2>
-
+          <ion-icon name="checkmark-circle" item-start large></ion-icon>
+          <h2 [hidden]="naopresente">Você ainda não está presente.</h2>
+          <h2 [hidden]="presente">Presença ok</h2>
+          <h2 [hidden]="mostranome">{{l.Aluno.NomeCompleto}}</h2>
 
           </ion-item>
       </ion-list>
+        
+    </ion-card>
+
+    <ion-card [hidden]="cont == 1" >
+
+        <h2 [hidden]="naopresente">Você ainda não está presente.</h2>
+        <h2 [hidden]="presente">Presença ok</h2>
+
     </ion-card>
 
 </ion-card>
 
 
-<ion-card [hidden]="aluno">
+<ion-card [hidden]="esconde">
     <ion-card>
       <button ion-button icon-start>
-        <ion-icon name="home"> Faltosos</ion-icon>
+        <ion-icon name="sad">    Faltosos</ion-icon>
       </button>
     </ion-card>
 
-    <ion-card>
+    <ion-card [hidden]="esconde">
       <ion-list *ngFor="let f of listaFaltosos" > 
         <ion-item>
-          <ion-icon name="football" item-start large></ion-icon>
+          <ion-icon name="close-circle" item-start large></ion-icon>
           <h2>{{f.NomeCompleto}}</h2>
         </ion-item>
       </ion-list>
     </ion-card>
 </ion-card>
   
-  
+</ion-scroll>
  
   
   

@@ -7,19 +7,18 @@
           </button> 
   
       <ion-title>
-        Lista de Turmas
-        <div class="notifications">
-          <ion-icon name="notifications"></ion-icon>
-        </div>
-        <ion-icon name="contact"></ion-icon>
+          <div class="titulo">
+            Lista de Turmas
+          </div>
       </ion-title>
+        <!-- <ion-icon name="contact"></ion-icon> -->
+      
     </ion-toolbar>  
 </ion-header>
 
-<ion-item></ion-item>
-<ion-item></ion-item>
 
-<ion-card>
+<ion-scroll scrollY="true">
+<ion-card  class="page-space">
 <ion-list  *ngFor="let t of turmasList" (click)="abreLista(t.TurmaId)">
     <!-- <button ion-item *ngFor="let turma of turmas" (click)="itemSelected(turma)">
       {{ turma }}
@@ -33,3 +32,7 @@
     </ion-card>
   </ion-list>
 </ion-card>
+
+  </ion-scroll>
+  
+  

@@ -1,17 +1,54 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
+    <ion-toolbar>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+          </button> 
+  
+      <ion-title>
+            <div class="titulo">
+        Selecione a turma 
+       </div>
+          <!-- <ion-icon name="contact"></ion-icon> -->
+      </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
-</ion-content>
+
+           
+  <ion-scroll scrollY="true">
+    <ion-card >
+            
+      <div class="contact-modal">
+
+      <ion-list  *ngFor="let t of turmasList; let i = index" >
+              
+        <div id="options" (click)="close()" >
+          <ion-icon name="close-circle"></ion-icon>
+        </div>
+        
+                  <ion-item>
+                    
+                    <!-- <h2>{{formataData(t.HoraInicial)}}</h2>
+                    <h3>{{formataData(t.HoraFinal)}}</h3> -->
+                    <ion-label>{{t.NomeTurma}}</ion-label>
+                    <ion-checkbox [(ngModel)]="t.selected" ></ion-checkbox>
+                    <!-- <ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox> -->
+
+                  </ion-item>
+
+                  <div class="right">
+                  <button ion-button (click)="dismiss()"  >
+                      Add
+                      
+                    </button>
+                  </div>
+        
+        </ion-list>
+
+      </div>
+
+      </ion-card>
+            
+    </ion-scroll>
+              
+              

@@ -34,7 +34,7 @@ export class CadastrarProfessorPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController
   ,public modalCtrl: ModalController) {
-      this.basepath = "http://localhost:8090/professor/addprofessor";
+      this.basepath = "http://192.168.0.12:8090/professor/addprofessor";
       this.save = false;
       this.edit = true;
       this.id = navParams.get('id');
@@ -137,7 +137,7 @@ export class CadastrarProfessorPage {
       headers.append('Accept','application/json');
       headers.append('content-type','application/json');
 
-      this.basepath = "http://localhost:8090/professor/";
+      this.basepath = "http://192.168.0.12:8090/professor/";
       
       this.http.get(this.basepath+'/'+this.id  ,{ headers: headers })
       .map(
@@ -178,7 +178,7 @@ export class CadastrarProfessorPage {
     this.professor.idade = this.idade;
     this.professor.professorId = this.professorId;
 
-    this.basepath = "http://localhost:8090/professor/update/";
+    this.basepath = "http://192.168.0.12:8090/professor/update/";
     this.save = false;
     this.edit = true;
 

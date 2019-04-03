@@ -7,3 +7,43 @@ ion-icon {
     font-size: 2.0em;
     float: right;
   }
+
+
+ion-card.card-publicacao.card.card-md {
+    border-radius: 10px;
+}
+
+.card-publicacao-publicar {
+  margin-left: 200px;
+}
+
+.card-publicacao-text {
+  margin-left: 18px;
+}
+
+ion-card.card-mensagens.card.card-md {
+  border-radius: 10px;
+}
+
+.card-mensagens-titulo {
+  margin-left: 20px;
+  margin-top: 10px;
+  white-space: normal !important;
+
+}
+
+.card-mensagens-mensagem {
+  white-space: normal !important;
+}
+
+.escolher-turma-icon {
+  margin-right: 10px;
+  margin-top: -30px;
+}
+
+.organizador-card {
+  /* border-radius: 136px; */
+  border: groove;
+  border-radius: -13px;
+  border-color: #f4f4f4;
+}

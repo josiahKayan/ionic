@@ -3,13 +3,12 @@ import { App,Platform,AlertController,NavController ,MenuController , Nav} from 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-// import { TabsPage } from '../pages/tabs/tabs';
+import { Http, HttpModule, Headers } from '@angular/http';
 import { LoginPage} from '../pages/login/login';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { TurmasPage } from '../pages/turmas/turmas';
 import { HomeProfessorPage } from '../pages/home-professor/home-professor';
-
-
+import { Events } from 'ionic-angular';
 
 
 
@@ -23,9 +22,16 @@ export class MyApp {
   navCtrl: NavController;
   menu:MenuController;
   id:string;
+  http:Http;
+  fFoto:string;
+  fName:string;
+
+  
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, alertCtrl: AlertController, app: App
-  ,menu :MenuController ) {
+  ,menu :MenuController, public htp: Http,public events: Events) {
+
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -34,15 +40,74 @@ export class MyApp {
       // this.navCtrl = navCtrl;
       this.navCtrl = app.getRootNav();
       this.menu = menu;
+      this.http = htp;
       splashScreen.hide();
+    
     });
 
-
+    events.subscribe('menu:opened', () => {
+      this.setMenu();
+    });
 
   }
 
-
   
+
+  setMenu(){
+
+    this.fFoto = "assets/imgs/blank-profile-default.png";
+    
+    this.fName = localStorage.getItem('NomeCompleto');
+
+    let hasPhoto =   localStorage.getItem('photo') ;
+
+    if(  hasPhoto !=null ){
+      this.fFoto = hasPhoto;
+    }
+    
+    // if( result.NomeCompleto != null ){
+    //   this.fName = result.NomeCompleto;
+    // }
+
+
+  }
+  
+
+  menuOpened() {
+
+    this.events.publish('menu:opened', '');
+
+    //code to execute when menu ha opened
+    this.fFoto = "assets/imgs/blank-profile-default.png";
+    
+    this.fName = localStorage.getItem('NomeCompleto');
+
+    let hasPhoto =   localStorage.getItem('photo') ;
+
+    if(  hasPhoto !=null ){
+      this.fFoto = hasPhoto;
+    }
+}
+
+
+
+
+menuClosed() {
+
+  //code to execute when menu ha opened
+  this.fFoto = "assets/imgs/blank-profile-default.png";
+    
+  this.fName = localStorage.getItem('NomeCompleto');
+
+  let hasPhoto =   localStorage.getItem('photo') ;
+
+  if(  hasPhoto !=null ){
+    this.fFoto = hasPhoto;
+  }
+
+}
+
+
   showConfirm() {
     const confirm = this.alertCtrl.create({
       title: 'Sair',

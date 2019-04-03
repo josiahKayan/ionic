@@ -18,7 +18,7 @@ import { dateSortValue } from 'ionic-angular/umd/util/datetime-util';
 })
 export class TurmasPage {
 
-  private urlPerfilBase: string = "http://localhost:8090/turma/";
+  private urlPerfilBase: string = "http://192.168.0.12:8090/turma/";
   id : string ;
   nav : NavController;
   public turma: Turma;

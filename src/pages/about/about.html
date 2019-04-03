@@ -1,35 +1,96 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
-  </ion-navbar>
+    <ion-toolbar>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+          </button> 
+  
+      <ion-title>
+            <div class="titulo">
+        Frequência 
+       </div>
+          <!-- <ion-icon name="contact"></ion-icon> -->
+      </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col width-100>
-        <ion-list>
 
-          <ion-item>
-            <strong>App Name:</strong> Weather
-          </ion-item>
+<ion-scroll scrollY="true">
+    <ion-card class="geral">
+        
+        <ion-grid >
+    
+            <div id="options" (click)="close()" >
+                <ion-icon name="close-circle"></ion-icon>
+            </div>
 
-          <ion-item>
-            <strong>Version:</strong> 1.0.0
-          </ion-item>
+                <ion-row class="row">
+                        <ion-col class="col" col-4=""><div class="a"><h2>Data</h2></div>
+                        </ion-col>
+                        <ion-col col-8 >
+    
+                            <ion-slides  slidesPerView=2  >
+                                
+                                <ion-slide >
+                                  <div id="presencaNome">
 
-          <ion-item>
-            <strong>Description:</strong> Ionic Weather Example
-          </ion-item>
+                                    <h2>{{presencaData.Nome}}</h2>
+                                    
+                                  </div>
+                                  
+                                </ion-slide>
+                                    
+                            </ion-slides>
+                          </ion-col>
+                </ion-row>
+    
+                <!-- <ion-row *ngFor="let d of lDatas" (click)="abreModal(p)" > -->
+                <ion-row *ngFor="let d of lDatas; let o = index" >
 
-        </ion-list>
+                    <ion-col col-4 >
+                        
+                        <ion-item>
+                            <h2>
+                              {{d}}
+                            </h2>
+                        </ion-item>
+        
+                    </ion-col>
 
-      </ion-col>
+                    <ion-col col-8 style="background: #d7efcf" *ngIf="lPresencaDia[o].Presente == 1 " >
+    
+                        <ion-slides  slidesPerView=1  >
+                        
+                          <ion-slide >
+                            <div id="simbolo">
+                              <ion-icon style="background: #d7efcf" *ngIf="lPresencaDia[o].Presente == 1 " name="checkmark-circle"></ion-icon>
 
-    </ion-row>
+                              <ion-icon style="background: #e9c5be" *ngIf="lPresencaDia[o].Presente == 0 " name="close-circle"></ion-icon>
+                            </div>
+                          </ion-slide>
+                          
+        
+                        </ion-slides>
+                    </ion-col>
 
-  </ion-grid>
+                    <ion-col col-8 style="background: #e9c5be" *ngIf="lPresencaDia[o].Presente == 0 " >
+    
+                        <ion-slides  slidesPerView=1  >
+                        
+                          <ion-slide >
+                            <div id="simbolo">
+                              <ion-icon style="background: #d7efcf" *ngIf="lPresencaDia[o].Presente == 1 " name="checkmark-circle"></ion-icon>
 
-</ion-content>
+                              <ion-icon style="background: #e9c5be" *ngIf="lPresencaDia[o].Presente == 0 " name="close-circle"></ion-icon>
+                            </div>
+                          </ion-slide>
+                          
+        
+                        </ion-slides>
+                    </ion-col>
+
+                </ion-row>
+            
+        </ion-grid>
+    
+    </ion-card>
+    </ion-scroll>

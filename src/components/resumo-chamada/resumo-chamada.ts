@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { Http, HttpModule, Headers } from '@angular/http';
-import { LeituraQrcodeComponent } from '../leitura-qrcode/leitura-qrcode';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+// import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import {LerQrcodeComponent} from '../ler-qrcode/ler-qrcode';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Geolocation } from '@ionic-native/geolocation';
+import { GeraQrcodeComponent } from '../gera-qrcode/gera-qrcode';
+
 
 
 /**
@@ -26,31 +29,84 @@ export class ResumoChamadaComponent {
   alertCtrl: AlertController;
   aluno : boolean;
   nav: NavController;
-  qrScanner: QRScanner;
+  // qrScanner: QRScanner;
   idUser: number;
+  num: string;
+  barcodeScanner :BarcodeScanner;
   geolocation: Geolocation;
+  http: Http;
+  professor : boolean;
+
+  naopresente:boolean;
+  presente:boolean;
+  mostranome:boolean;
+
+  marca : boolean;
+  gera : boolean;
+  esconde : boolean;
+
+  dia:number;
+  mes:number;
+  ano:number;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController,alertCtrl: AlertController, qr: QRScanner,private geo: Geolocation) { 
+  cont:number;
+
+  constructor(barcodeScanner: BarcodeScanner,public navCtrl: NavController, public navParams: NavParams, public htttp: Http, public loadingCtrl: LoadingController,alertCtrl: AlertController
+    ,  geo: Geolocation
+  ) { 
     
     this.idPresenca = navParams.get('idPresenca');
     this.idTurma = navParams.get('idTurma');
+
+    this.dia = navParams.get('dia');
+    this.mes = navParams.get('mes');
+    this.ano = navParams.get('ano');
+
     this.alertCtrl = alertCtrl;
 
     this.nav = navCtrl;
 
     this.idUser = parseInt( localStorage.getItem('id'));
 
-
-    this.aluno = ( localStorage.getItem('aluno') == "true" ) ? true : false;
-    
-
-    this.carregaListaPresentes(this.idPresenca,this.idTurma, this.aluno);
+    this.barcodeScanner = barcodeScanner ;
 
     this.geolocation = geo;
 
-    this.qrScanner = qr;
+    this.http = htttp;
 
+    this.marca = true;
+    this.gera = true;
+    this.esconde = false;
+
+    this.aluno = ( localStorage.getItem('aluno') === "true" ) ? true : false;
+
+    if(this.aluno){
+        this.marca = false;
+        this.esconde = true;
+        this.presente = false;
+        this.naopresente = false;
+    }
+  
+    this.professor = this.aluno == true ? false : false;
+
+    if(this.professor){
+      
+      this.gera = false;
+      this.esconde = false;
+      this.marca = true;
+
+
+      this.naopresente = true;
+      this.presente = true;
+      this.mostranome = false;
+    }
+  
+
+
+    this.carregaListaPresentes(this.idPresenca,this.idTurma, this.aluno);
+
+    
 
 
   }
@@ -72,20 +128,59 @@ export class ResumoChamadaComponent {
       headers.append('Accept','application/json');
       headers.append('content-type','application/json');
 
-      this.basepath = "http://localhost:8090/resumo-presenca/";
+      this.basepath = "http://192.168.0.12:8090/resumo-presenca/";
       
-      let idUser =localStorage.getItem('id');
+      if( idAluno === false  ){
+        this.idUser = 0;
+      }
 
 
-      this.http.get(this.basepath+'/GetResumoListaPresencaByIdPresencalista/'+idPresenca+'/'+idUser  ,{ headers: headers })
+      this.http.get(this.basepath+'/GetResumoListaPresencaByIdPresencalista/'+idPresenca+'/'+this.idUser  ,{ headers: headers })
       .map(
         res => res.json()
       )
       .subscribe(
         (result) => {
 
-          if(result[0] != null){
+
+          if(this.aluno){
+            if(result.length > 0 && result[0].Aluno.AlunoId != 0 ){
+              
+              
+              this.cont = 0 ;
+
+              result.forEach(element => {
+                  if(element.Aluno.UsuarioId == this.idUser){
+                    this.cont = 1;
+                    
+                  }
+                  
+              });
+
+              if(this.cont == 1){
+                this.aluno = false;
+                this.ListaPresentes = [];
+                this.ListaPresentes.push(result[0]);
+                this.marca = true;
+
+                this.naopresente = true;
+                this.presente = false;
+              }else{
+                this.cont = 0;
+              }
+
+            }
+            else{
+              this.naopresente = false;
+              this.presente = true;
+              this.mostranome = true;
+            }
+          }//caso seja professor
+          else{
             this.ListaPresentes = result;
+            this.gera = false;
+            this.naopresente = true;
+            this.presente = true;
           }
 
 
@@ -104,43 +199,33 @@ export class ResumoChamadaComponent {
   }
   marcar(){
 
-    alert(this.idPresenca);
-    alert(this.idTurma);
-    alert(this.idUser);
+    var position = { "latitude":0,"longitude":0  }
 
-    
+    this.barcodeScanner.scan().then(data => {
+        // this is called when a barcode is found
+        this.num = data.text
 
-    // this.nav.push(LeituraQrcodeComponent, {   idTurma: this.idTurma, idPresenca: this.idPresenca } );
+        // alert("lido do professor");
 
-    this.qrScanner.prepare()
-  .then((status: QRScannerStatus) => {
-     if (status.authorized) {
-       // camera permission was granted
-
-
-       // start scanning
-       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-         console.log('Scanned something', text);
-
-          alert("Texto lido "+text);
-
-          alert('Ativando GPS');
-
-          var position = { "latitude":0,"longitude":0  }
-
-          let options = {timeout: 10000, enableHighAccuracy: true};
+        let options = {timeout: 30000, enableHighAccuracy: true};
         this.geolocation.getCurrentPosition(options)
             this.geolocation.getCurrentPosition().then((resp) => {
               // resp.coords.latitude
               // resp.coords.longitude
-
-              alert('Entrou no método do GPS');
-
-              // position.latitude =resp.coords.latitude ;
-              // position.longitude =resp.coords.longitude ;
-
+      
+              position.latitude =resp.coords.latitude ;
+              position.longitude =resp.coords.longitude ;
+      
               ///Gerar a informação aqui
-              // this.qrData = ""+position.latitude + ";"+position.longitude+";"+this.idTurma;
+              // alert(this.num);
+
+              var info = 
+              { 
+                "position":{"latitude":0,"longitude":0},
+                "data":{"dia":0,"mes":0,"ano":0,"hora":0,"minutos":0},
+                "turma":{"idTurma":0},
+                "presenca":{"idPresenca":0}
+              }
 
               let loading = this.loadingCtrl.create({
                 content: 'Carregando...'
@@ -154,29 +239,81 @@ export class ResumoChamadaComponent {
               headers.append('Accept','application/json');
               headers.append('content-type','application/json');
           
-              this.basepath = "http://localhost:8090/resumo-presenca/InsertPresenca/"+this.idPresenca+"/"+this.idTurma+"/"+this.idUser+"";
+              info = JSON.parse(this.num);
 
-              this.http.post(this.basepath, JSON.stringify(this.aluno), { headers: headers })
-                .map(
-                  res => res.json()
-                )
-                .subscribe(
-                  (result) => {
-                    // if(result.indexOf('OK')){
+              var aluno = parseInt( localStorage.getItem('id'));
+
+              var d = new Date();
+              var dia = d.getDate();
+              var mes = d.getMonth() + 1;
+              var ano = d.getFullYear();
+              var hora = d.getHours();
+              var minutos = d.getMinutes();
+      
+              // alert("Antes de entrar na data");
+
+              if( info.data.dia === dia && info.data.mes === mes && info.data.ano === ano ){
+
+                  // alert("Vamos testar");
+                  // alert("lat lido: "+Math.floor(info.position.latitude));
+                  // alert("lat meu "+Math.floor(position.latitude));
+                  // alert("long lido:"+Math .floor(info.position.longitude));
+                  // alert("long meu:"+Math.floor(position.longitude));
+                  // alert("request");
+
+                  if( Math.floor( info.position.latitude) == Math.floor( position.latitude)  && Math.floor( info.position.longitude) == Math.floor( position.longitude )  ){
+                  
+                      this.http.get(this.basepath+"/InsertPresenca"+'/'+info.presenca.idPresenca+'/'+info.turma.idTurma+"/"+aluno+'/'  ,{ headers: headers })
+                      .map(
+                        res => res.json()
+                      )
+                      .subscribe(
+                        (result) => {
+                            loading.dismiss();
+                            if(  result === "OK"  ){
+                              
+
+                              let alert = this.alertCtrl.create({
+                                title: 'Sucesso',
+                                subTitle: 'Frequência cadastrada com sucesso!!',
+                                buttons: ['Ok']
+                              });
+                              alert.present();
+
+                              this.navCtrl.pop();
+                            }          
+                        }
+                      );
+                    }
+                    else{
+                      let alert = this.alertCtrl.create({
+                        title: 'Erro',
+                        subTitle: 'Fora do raio de posição!',
+                        buttons: ['Ok']
+                      });
+                      alert.present();
                       loading.dismiss();
-                      
-                      //Redirecionar para a lista de presenças
+      
+                    }
+        
+                }
+              
+              else{
+                let alert = this.alertCtrl.create({
+                  title: 'Erro',
+                  subTitle: 'Fora da data chamada!',
+                  buttons: ['Ok']
+                });
+                alert.present();
+                loading.dismiss();
 
-                    // }
-                  }
-                );
-
-              //Adicionar a presença aqui
-
+              }
+      
             }).catch((error) => {
               console.log('Error getting location', error);
+              
             });
-
+      
             let watch = this.geolocation.watchPosition();
             watch.subscribe((data) => {
               // data can be a set of coordinates, or an error (if an error occurred).
@@ -184,31 +321,8 @@ export class ResumoChamadaComponent {
               // data.coords.longitude
             });
 
-
-
-         this.qrScanner.hide(); // hide camera preview
-         scanSub.unsubscribe(); // stop scanning
-       });
-
-     } else if (status.denied) {
-
-        alert('status denied');
-        alert(status.denied);
-
-       // camera permission was permanently denied
-       // you must use QRScanner.openSettings() method to guide the user to the settings page
-       // then they can grant the permission from there
-     } else {
-        alert('permission denied');
-
-       // permission was denied, but not permanently. You can ask for permission again at a later time.
-     }
-  })
-  .catch((e: any) => console.log('Error is', e));
+      });    
     
-
-
-
   }
 
   carregaListaFaltosos(idTurma : number, idPresenca: number){
@@ -227,7 +341,7 @@ export class ResumoChamadaComponent {
       headers.append('Accept','application/json');
       headers.append('content-type','application/json');
 
-      this.basepath = "http://localhost:8090/resumo-presenca/";
+      this.basepath = "http://192.168.0.12:8090/resumo-presenca/";
       
       this.http.get(this.basepath+'/GetResumoListaFaltosos/'+idPresenca+'/'  +idTurma  ,{ headers: headers })
       .map(
@@ -248,7 +362,9 @@ export class ResumoChamadaComponent {
   }
 
 
-  
+  geraQRCode(){
+    this.nav.push(GeraQrcodeComponent, {   idTurma: this.idTurma, idPresenca: this.idPresenca,dia:this.dia,mes:this.mes,ano:this.ano} );    
+  }
 
 
 }

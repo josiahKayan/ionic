@@ -13,12 +13,12 @@ import 'rxjs/add/operator/map';
 export class ProfessorPage {
 
   public professores: Array<any>;
-  private url: string = "http://localhost:8090/professor/professores";  
+  private url: string = "http://192.168.0.12:8090/professor/professores";  
   delete = "/delete";
   
   
   constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
-    this.delete = 'http://localhost:8090/professor/';
+    this.delete = 'http://192.168.0.12:8090/professor/';
     this.Content();
   }
 

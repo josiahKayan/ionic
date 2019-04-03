@@ -29,12 +29,12 @@ export class CursoPage {
   alertC: AlertController;
 
   public cursos : Array<any>;
-  private url: string = "http://localhost:8090/curso/cursos";  
+  private url: string = "http://192.168.0.12:8090/curso/cursos";  
 
   constructor( public viewCtrl: ViewController,alertCtrl: AlertController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
     
     this.fetchContent();
-    this.delete = 'http://localhost:8090/curso/';
+    this.delete = 'http://192.168.0.12:8090/curso/';
     this.alertC = alertCtrl;
     this.showNavbar = false;
   }

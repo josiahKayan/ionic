@@ -1,20 +1,74 @@
+<ion-menu  type="overlay" [content]="content" (ionOpen)="menuOpened()" (ionClose)="menuClosed()" >
+    <ion-content style="background-color:#324bdb;">
+                    
+        <div class="spacer" style="width: 268px; height: 18px;"></div>
+      <div class="profile-image">
+        <img src="{{fFoto}}" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;">
+      </div>
+      <h3 id="menu-heading1" style="color:#FAF5F6;font-weight:300;text-align:center;">{{fName}}</h3>
+      <div class="spacer" style="width: 268px; height: 28px;"></div>
 
-<ion-menu  type="overlay" [content]="content">
-    <ion-content>
+            <ion-list id="menu-list1">
+                
+                <ion-item class="item-icon-left side-menu-item" id="menu-list-item1" menuClose detail-none>    
+                    <div class="item-icon">
+                        <div class="item-icon-icon">
+                            <ion-icon name="menu"></ion-icon>
+                        </div>
+                        <div class="item-icon-text">
+                            <h2>Menu</h2>
+                        </div>
+                    </div>
+                </ion-item>
+
+                <ion-item class="item-icon-left side-menu-item" id="menu-list-item1" (click)="irHome()"  >
+                  <div class="item-icon">
+                        <div class="item-icon-icon">
+                            <ion-icon name="ios-home-outline"></ion-icon>
+                        </div>
+                        <div class="item-icon-text">
+                            <h2>Início</h2>
+                        </div>
+                    </div>
+                </ion-item>
+                  
+                <ion-item class="item-icon-left side-menu-item" id="menu-list-item2" (click)="abrirPerfil()" >
+                  
+                    <div class="item-icon">
+                            <div class="item-icon-icon">
+                                <ion-icon name="ios-person-outline"></ion-icon>
+                            </div>
+                            <div class="item-icon-text">
+                                <h2>Perfil</h2>
+                            </div>
+                        </div>
+                </ion-item>
+                
+                <ion-item class="item-icon-left side-menu-item" id="menu-list-item3" (click)="abrirTurmas()"  >
+                  <div class="item-icon">
+                        <div class="item-icon-icon">
+                            <ion-icon name="ios-people-outline"></ion-icon>
+                        </div>
+                        <div class="item-icon-text">
+                            <h2>Turmas</h2>
+                        </div>
+                    </div>
+
+                </ion-item>
+                <ion-item class="item-icon-left side-menu-item" id="menu-list-item12" (click)="showConfirm()" >
+                  
+                  <div class="item-icon">
+                        <div class="item-icon-icon">
+                            <ion-icon name="ios-exit-outline"></ion-icon>
+                        </div>
+                        <div class="item-icon-text">
+                            <h2>Sair</h2>
+                        </div>
+                    </div>
+                </ion-item>
+              </ion-list>
 
 
-
-    <ion-list>
-            <ion-item menuClose detail-none><ion-icon name="menu"> -  Menu</ion-icon></ion-item>
-            <ion-item menuClose detail-none ><ion-icon name="home" (click)="irHome()"> -  Início</ion-icon></ion-item>
-            <ion-item ><ion-icon name="contact" (click)="abrirPerfil()"> -   Perfil</ion-icon></ion-item>
-            <ion-item ><ion-icon name="people" (click)="abrirTurmas()"> -  Turmas</ion-icon></ion-item>
-
-            <ion-item><ion-icon name="exit" (click)="showConfirm()"> -  Sair</ion-icon></ion-item>
-
-
-
-    </ion-list>
 </ion-content>
 </ion-menu>
 <ion-nav #content [root]="rootPage"></ion-nav>

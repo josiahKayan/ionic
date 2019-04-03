@@ -20,11 +20,11 @@ import 'rxjs/add/operator/map';
 export class TagPage {
 
   public tags: Array<Tag>;
-  private url: string = "http://localhost:8090/tag/tags";  
+  private url: string = "http://192.168.0.12:8090/tag/tags";  
   delete = "/delete";
 
   constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
-    this.delete = 'http://localhost:8090/tag/';
+    this.delete = 'http://192.168.0.12:8090/tag/';
     this.Content();
   }
 

@@ -7,7 +7,28 @@ page-login {
     
 }
 
-button-logar{
 
-
+page-login.ion-page.show-page {
+        background: #488ABF;
 }
+
+ion-card.card-login.card.card-md {
+        margin-top: 150px;
+        border-radius: 16px;
+        height: 270px;
+}
+
+.button-logar.text-center {
+        /* max-height: 224px; */
+        margin-left: 35px;
+        margin-top: 48px;
+        margin-right: 35px;
+        /* width: 400px; */
+        /* margin-right: 57px; */
+        /* height: 37px; */
+}
+
+button.button.button-md.button-default.button-default-md.button-block.button-block-md {
+        border-radius: 10px;
+        height: 45px;
+    }

@@ -18,7 +18,7 @@ import 'rxjs/add/operator/map';
 })
 export class PerfilPage {
 
-  private urlPerfilBase: string = "http://localhost:8090/usuario/";
+  private urlPerfilBase: string = "http://192.168.0.12:8090/usuario/";
   id : string ;
   public save:boolean;
   public edit:boolean;

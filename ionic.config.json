@@ -1,13 +1,10 @@
 {
-  "name": "weather",
+  "name": "controlepresenca",
   "integrations": {
     "cordova": {}
   },
   "type": "ionic-angular",
   "proxies": [
-    {
-      "path": "/aluno",
-      "proxyUrl": "http://localhost:8090"
-    }
+  
   ]
 }

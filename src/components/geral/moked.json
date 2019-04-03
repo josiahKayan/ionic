@@ -1,0 +1,28 @@
+{
+    "totalDias":4,
+    "frequencia":[{
+        "aluno":[{
+            "strFoto":"www.foto.com.br",
+            "strNome":"Felipe",
+            "data":["01-01-2019","02-01-2019","03-01-2019","04-01-2019"],
+	        "presencas":3,
+            "faltas":0
+        }
+        ,{
+            "strFoto":"www.foto.com.br",
+            "strNome":"André",
+            "data":["01-01-2019","02-01-2019","03-01-2019","04-01-2019"],
+	        "presencas":2,
+            "faltas":1
+        }
+        ,
+        {
+            "strFoto":"www.foto.com.br",
+            "strNome":"Marcelo",
+            "data":["01-01-2019","02-01-2019","03-01-2019","04-01-2019"],
+	        "presencas":0,
+	        "faltas":3
+        }]
+    }]
+}
+

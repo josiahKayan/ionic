@@ -1,0 +1,102 @@
+<ion-header>
+        <ion-toolbar>
+              <button ion-button menuToggle>
+                  <ion-icon name="menu"></ion-icon>
+              </button> 
+      
+          <ion-title>
+                <div class="titulo">
+            Frequência 
+            </div>
+              <!-- <ion-icon name="contact"></ion-icon> -->
+          </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    
+    
+    
+    
+    <ion-scroll scrollY="true">
+    <ion-card class="geral">
+    
+        <ion-grid >
+    
+                <ion-row class="row">
+                        <ion-col class="col" col-4=""><div class="a"><h2>Aluno</h2></div>
+                        </ion-col>
+                        <ion-col col-8 >
+    
+                                <ion-slides  slidesPerView=2  >
+                                
+                                <ion-slide >
+                                    <h2>Presenças</h2>
+                                </ion-slide>
+                                <ion-slide >
+                                    <h2>Faltas</h2>
+                                </ion-slide>
+                                    
+                                </ion-slides>
+                            </ion-col>
+                </ion-row>
+    
+                <ion-row *ngFor="let p of presencaList" (click)="abreModal(p)" >
+                
+                <ion-col col-4 >
+                    
+    
+                        <ion-item>
+                                <ion-avatar slot="start">
+                                        <img src="{{ isNulo(p.Imagem) }}">
+                                    </ion-avatar>
+                                    <p>
+                                        {{p.Nome}}
+                                    </p>
+                            </ion-item>
+    
+                </ion-col>
+                <!-- <ion-col col-8 style="background: blue"> -->
+                <ion-col col-8 >
+    
+                    <ion-slides  slidesPerView=2  >
+                    
+                    <ion-slide style="background: #d7efcf">
+                        <h2>{{p.PresencasTotal}}</h2>
+                    </ion-slide>
+                    
+                    <ion-slide style="background: #e9c5be">
+                            <h2>{{p.FaltasTotal}}</h2>
+                        </ion-slide>
+    
+                    </ion-slides>
+                </ion-col>
+                </ion-row>
+            
+        </ion-grid>
+    
+        <!-- <ion-grid [hidden]=grid >
+    
+            <ion-col col-8 *ngFor="let d of listaDatas" >
+    
+            <ion-row class="row">
+                            <ion-col class="col" col-4="">
+                                <div class="a"><h2>Aluno</h2></div>
+                            </ion-col>
+                
+                <ion-col col-8 >
+                    <ion-slides pager slidesPerView=4 >
+                            
+                        <ion-slide *ngFor="let d of listaDatas">
+                            <h2>{{d}}</h2>
+                        </ion-slide>
+                            
+                    </ion-slides>
+                </ion-col>
+            </ion-row>
+    
+          
+
+        </ion-grid>
+         -->
+    
+    </ion-card>
+    </ion-scroll>

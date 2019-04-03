@@ -35,7 +35,7 @@ export class CadastrarAlunoPage {
   public tagId : number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
-      this.basepath = "http://localhost:8090/aluno/addaluno";
+      this.basepath = "http://192.168.0.12:8090/aluno/addaluno";
       this.save = false;
       this.edit = true;
       this.id = navParams.get('id');
@@ -128,7 +128,7 @@ export class CadastrarAlunoPage {
       headers.append('Accept','application/json');
       headers.append('content-type','application/json');
 
-      this.basepath = "http://localhost:8090/aluno/";
+      this.basepath = "http://192.168.0.12:8090/aluno/";
       
       this.http.get(this.basepath+'/'+this.id  ,{ headers: headers })
       .map(
@@ -185,7 +185,7 @@ export class CadastrarAlunoPage {
     this.aluno.tag.code = this.tagCode;
     this.aluno.tag.status = 0;
 
-    this.basepath = "http://localhost:8090/aluno/update/";
+    this.basepath = "http://192.168.0.12:8090/aluno/update/";
     this.save = false;
     this.edit = true;
 
@@ -229,7 +229,7 @@ export class CadastrarAlunoPage {
       loading.present();
   
       try {
-         this.http.get("http://localhost:8090/tag/tags-free").map(res => res.json()).subscribe(res => {
+         this.http.get("http://192.168.0.12:8090/tag/tags-free").map(res => res.json()).subscribe(res => {
           this.tags = res;
           // alert(JSON.stringify(this.alunos));
           loading.dismiss();

@@ -22,7 +22,7 @@ export class CadastrarTagPage {
   public tag: Tag;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
-    this.basepath = "http://localhost:8090/tag/addtag";
+    this.basepath = "http://192.168.0.12:8090/tag/addtag";
     this.save = false;
     this.edit = true;
     this.id = navParams.get('id');
@@ -86,7 +86,7 @@ carrega() {
     headers.append('Accept','application/json');
     headers.append('content-type','application/json');
 
-    this.basepath = "http://localhost:8090/tag/";
+    this.basepath = "http://192.168.0.12:8090/tag/";
     
     this.http.get(this.basepath+'/'+this.id  ,{ headers: headers })
     .map(
@@ -123,7 +123,7 @@ editarCurso( id: string){
   this.tag.status = this.status == true ? 1 : 0;
   
 
-  this.basepath = "http://localhost:8090/tag/update/";
+  this.basepath = "http://192.168.0.12:8090/tag/update/";
   this.save = false;
   this.edit = true;
 

@@ -19,8 +19,8 @@ export class TurmasComponent {
   text: string;
   nav : NavController;
   public professores: Array<any>;
-  private url: string = "http://localhost:8090/professor/professores";
-  private urlTurma: string = "http://localhost:8090/turma/addturma";
+  private url: string = "http://192.168.0.12:8090/professor/professores";
+  private urlTurma: string = "http://192.168.0.12:8090/turma/addturma";
 
   public turma: Turma; 
   public nome : string;
@@ -81,7 +81,7 @@ export class TurmasComponent {
       headers.append('Accept','application/json');
       headers.append('content-type','application/json');
 
-      let basepath = "http://localhost:8090/turma/";
+      let basepath = "http://192.168.0.12:8090/turma/";
       
       this.http.get(basepath+this.turmaId  ,{ headers: headers })
       .map(
@@ -119,7 +119,7 @@ export class TurmasComponent {
     this.turma.ProfessorId = this.professorId;
     this.turma.CursoId = this.cursoId;
 
-    var urlTurmaUpdate = "http://localhost:8090/turma/update/";
+    var urlTurmaUpdate = "http://192.168.0.12:8090/turma/update/";
     this.save = false;
     this.edit = true;
 

@@ -15,7 +15,7 @@ import { LoginPage } from '../login/login';
 
 export class CadastrarCursoPage {
   basepath = "/addcurso";
-  basePathTurmas = "http://localhost:8090/turma/GetTurmasPeloCursoId/";
+  basePathTurmas = "http://192.168.0.12:8090/turma/GetTurmasPeloCursoId/";
   public curso: Curso;
   public turmas:Array<Turmas>;
   nome: string;
@@ -28,11 +28,11 @@ export class CadastrarCursoPage {
   modal:ModalController ;
   view : ViewController;
   alertC: AlertController;
-  private urlTurma: string = "http://localhost:8090/turma/";
+  private urlTurma: string = "http://192.168.0.12:8090/turma/";
 
   constructor(public navCtrl: NavController,alertCtrl: AlertController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController, modal: ModalController , 
    viewCt : ViewController) {
-      this.basepath = "http://localhost:8090/curso/addcurso";
+      this.basepath = "http://192.168.0.12:8090/curso/addcurso";
       this.save = false;
       this.edit = true;
       this.id = navParams.get('id');
@@ -113,7 +113,7 @@ export class CadastrarCursoPage {
       headers.append('Accept','application/json');
       headers.append('content-type','application/json');
 
-      this.basepath = "http://localhost:8090/curso/";
+      this.basepath = "http://192.168.0.12:8090/curso/";
       
       this.http.get(this.basepath+'/'+this.id  ,{ headers: headers })
       .map(
@@ -161,7 +161,7 @@ export class CadastrarCursoPage {
     this.curso.descricao = this.descricao;
     this.curso.ativo = this.ativo;
 
-    this.basepath = "http://localhost:8090/curso/update/";
+    this.basepath = "http://192.168.0.12:8090/curso/update/";
     this.save = false;
     this.edit = true;
 

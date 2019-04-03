@@ -30,11 +30,22 @@ import {ListaChamadaComponent} from '../components/lista-chamada/lista-chamada';
 import {ResumoChamadaComponent} from '../components/resumo-chamada/resumo-chamada';
 
 import {GeraQrcodeComponent} from '../components/gera-qrcode/gera-qrcode';
-import {LeituraQrcodeComponent} from '../components/leitura-qrcode/leitura-qrcode';
-import { QRCodeModule } from 'angularx-qrcode';
 import { Geolocation } from '@ionic-native/geolocation';
 import {HomeAlunoPage} from '../pages/home-aluno/home-aluno';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import {LerQrcodeComponent} from '../components/ler-qrcode/ler-qrcode';
+
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { NgxQRCodeComponent  } from 'ngx-qrcode2';
+import { GeralComponent } from '../components/geral/geral';
+
+import {AboutPage} from '../pages/about/about';
+
+import {ContactPage} from '../pages/contact/contact';
+
+
+// import { Platform } from 'ionic-angular';
+
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 @NgModule({
   declarations: [
@@ -57,14 +68,18 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
     TurmasComponent,
     ListaChamadaComponent,
     ResumoChamadaComponent,
-    LeituraQrcodeComponent,
     GeraQrcodeComponent,
-    HomeAlunoPage
+    HomeAlunoPage,
+    LerQrcodeComponent,
+    NgxQRCodeComponent,
+    GeralComponent,
+    AboutPage,
+    ContactPage
+
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    QRCodeModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -88,17 +103,25 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
     TurmasComponent,
     ListaChamadaComponent,
     ResumoChamadaComponent,
-    LeituraQrcodeComponent,
     GeraQrcodeComponent,
-    HomeAlunoPage
+    HomeAlunoPage,
+    LerQrcodeComponent,
+    NgxQRCodeComponent,
+    GeralComponent,
+    AboutPage,
+    ContactPage
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CursoServiceProvider,
+    Push,
     Geolocation,
-    QRScanner
+    NgxQRCodeComponent,
+
+    BarcodeScanner
 
     // RedditServiceProvider,
 
