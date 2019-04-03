@@ -248,7 +248,11 @@ export class CadastrarCursoPage {
             // rootNav.setRoot(LoginPage);
             //this.menu.close();
             
-            this.navCtrl.setRoot(LoginPage);
+            // this.navCtrl.setRoot(LoginPage);
+
+            this.navCtrl.insert(0,LoginPage);
+            this.navCtrl.popToRoot();
+
           }
         }
       ]

@@ -24,6 +24,8 @@ export class HomeAlunoPage {
       alertCtrl: AlertController;
       loading: LoadingController;
       imgTitulo: string;
+      page = 1;
+      perPage = 10;
     
       constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http,public loadingCtrl: LoadingController,alertCtrl: AlertController ) {
     
@@ -63,7 +65,7 @@ export class HomeAlunoPage {
     
           let pbpath = "http://192.168.0.12:8090/publicacao/publicacoes/aluno/";
           
-          this.http.get(pbpath+localStorage.getItem("id")  ,{ headers: headers })
+          this.http.get(pbpath+localStorage.getItem("id")+"/"+this.perPage+"/"+this.page  ,{ headers: headers })
           .map(
             res => res.json()
           )
@@ -98,6 +100,20 @@ export class HomeAlunoPage {
         let arrayMonth = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
         var ttt =  arrayMonth[mes-1];
         return ttt ;
+      }
+
+      doInfinite(infiniteScroll) {
+    
+    
+        setTimeout(() => {
+          
+          this.perPage = this.perPage + 10;
+          
+          this.carregaMural();
+    
+          infiniteScroll.complete();
+        }, 2000);
+    
       }
 
     }

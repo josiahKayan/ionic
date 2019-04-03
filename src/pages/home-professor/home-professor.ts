@@ -23,7 +23,9 @@ export class HomeProfessorPage {
   items = [];
   modal:ModalController ;
   turmas : any;
-
+  page = 1;
+  perPage = 10;
+ 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http,public loadingCtrl: LoadingController
     ,alertCtrl: AlertController, modal: ModalController ) {
@@ -40,10 +42,6 @@ export class HomeProfessorPage {
     }
 
     this.carregaMural();
-
-    for (let i = 0; i < 5; i++) {
-      this.items.push( this.items.length );
-    }
 
   }
 
@@ -112,7 +110,7 @@ export class HomeProfessorPage {
 
       let pbpath = "http://192.168.0.12:8090/publicacao/publicacoes/professor/";
       
-      this.http.get(pbpath+'1'  ,{ headers: headers })
+      this.http.get(pbpath+localStorage.getItem("id")+"/"+this.perPage+"/"+this.page  ,{ headers: headers })
       .map(
         res => res.json()
       )
@@ -160,16 +158,17 @@ export class HomeProfessorPage {
   }
 
   doInfinite(infiniteScroll) {
-    console.log('Begin async operation');
-
+    
+    
     setTimeout(() => {
-      for (let i = 0; i < 5; i++) {
-        this.items.push( this.items.length );
-      }
+      
+      this.perPage = this.perPage + 10;
+      
+      this.carregaMural();
 
-      console.log('Async operation has ended');
       infiniteScroll.complete();
-    }, 500);
+    }, 2000);
+
   }
 
 

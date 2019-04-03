@@ -130,7 +130,11 @@ menuClosed() {
             // rootNav.setRoot(LoginPage);
             this.menu.close();
             localStorage.clear();
-            this.navCtrl.setRoot(LoginPage);
+            // this.navCtrl.setRoot(LoginPage);
+
+            this.navCtrl.insert(0,LoginPage);
+            this.navCtrl.popToRoot();
+
           }
         }
       ]
