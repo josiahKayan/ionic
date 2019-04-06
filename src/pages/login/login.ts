@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController,AlertController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController,AlertController, NavParams,ToastController } from 'ionic-angular';
 import { Http, HttpModule,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { TabsPage } from '../tabs/tabs';
@@ -7,7 +7,7 @@ import { HomeProfessorPage } from '../home-professor/home-professor';
 import { HomeAlunoPage } from '../home-aluno/home-aluno';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Events } from 'ionic-angular';
-
+import { Network } from '@ionic-native/network/ngx';
 
 @IonicPage()
 @Component({
@@ -24,9 +24,16 @@ export class LoginPage {
   public push : Push;
   public idRegistration: string;
   alert:AlertController;
+  network: Network;
+  toast: ToastController;
 
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http,
+     ppush : Push, public alrt:AlertController,public events: Events,net: Network
+     ,public t: ToastController ) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http, ppush : Push, public alrt:AlertController,public events: Events ) {
+    this.toast = t;
+
+    this.network = net;
 
     // this.basepath = "httpdd://192.168.0.13:8090/usuario/login";
     this.basepath = "http://192.168.0.12:8090/usuario/login";
@@ -111,6 +118,40 @@ export class LoginPage {
     });
 
 }
+
+  
+checkConnection() {
+  
+  alert('buc');
+
+  // watch network for a disconnection
+let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+  alert('network was disconnected :-(');
+});
+
+// stop disconnect watch
+disconnectSubscription.unsubscribe();
+
+
+// watch network for a connection
+let connectSubscription = this.network.onConnect().subscribe(() => {
+  alert('network connected!');
+  // We just got a connection but we need to wait briefly
+   // before we determine the connection type. Might need to wait.
+  // prior to doing any api requests as well.
+  setTimeout(() => {
+    if (this.network.type === 'wifi') {
+      alert('we got a wifi connection, woohoo!');
+    }
+  }, 3000);
+});
+
+// stop connect watch
+connectSubscription.unsubscribe();
+
+}
+
+
 
   public login(){
 
@@ -202,9 +243,8 @@ export class LoginPage {
           }
         }
       );
-      // location.reload();
-      // this.navCtrl.push(ProfessorPage);
-    }
+      
+  }
 
 
     setDados( idGeneral : number , isAluno : boolean ){
@@ -274,6 +314,10 @@ export class LoginPage {
         }
 
     }
+
+
+    
+
 
   }
 

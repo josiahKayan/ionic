@@ -26,6 +26,7 @@ export class PerfilPage {
   username : string;
   fullusername : string;
   myBirthday : string;
+  Img : string;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
@@ -73,16 +74,21 @@ export class PerfilPage {
       .subscribe(
         (result) => {
 
-            var objPerfil = {"Nome":"","NomeCompleto":"","DataNascimento":""};
-            objPerfil = result;
-
             
             
-            this.username = objPerfil.Nome;
-            this.fullusername = objPerfil.NomeCompleto;
-            this.myBirthday = objPerfil.DataNascimento;
+            this.username = result.Nome;
+            this.fullusername = result.NomeCompleto;
+            this.myBirthday = result.DataNascimento;
             this.save = true;
             this.edit = false;
+
+            if( result.Imagem == null){
+              this.Img ="assets/imgs/blank-profile-default.png";
+            }
+            else{
+              this.Img = result.Imagem;
+            }
+
 
             loading.dismiss();
           
@@ -93,10 +99,32 @@ export class PerfilPage {
     
   }
 
- 
+  editarFoto(){
+    alert("Abrir Opcoes Tirar foto ou galeria");
+  }
 
   salvarPerfil(){
-    alert('top');
+    let perfil = new Perfil();
+
+    perfil.nome = this.username;
+    perfil.nomeCompleto = this.fullusername;
+    perfil.dataNascimento = this.myBirthday;
+    perfil.Imgem = this.Img;
+    
+    let headers = new Headers();
+    headers.append('Access-Control-Allow-Origin' , '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+    headers.append('Accept','application/json');
+    headers.append('content-type','application/json');
+
+    this.http.post(this.urlPerfilBase+"UpdatePerfil/"+this.id, JSON.stringify(perfil), { headers: headers })
+      .map(
+        res => res.json()
+      )
+      .subscribe(
+        (result) => {
+          alert("Perfil Editado com sucesso!!");
+        });
   }
 
 }
@@ -107,5 +135,6 @@ export class Perfil {
   nomeCompleto : string;
   dataNascimento: string;
   userId : number ;
+  Imgem : string;
 
 }

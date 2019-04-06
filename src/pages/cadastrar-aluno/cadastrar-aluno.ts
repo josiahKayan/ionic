@@ -56,7 +56,13 @@ export class CadastrarAlunoPage {
     this.aluno.usuario.email = this.email;
     this.aluno.usuario.senha = this.senha;
     
+    var tg = this.tags.filter( (v) =>{
+      return v.selected == true  ;
+    });
+
     this.aluno.tag = new Tag();
+
+
 
     this.aluno.tag.code = this.tagCode;
     this.aluno.tag.status = 1;

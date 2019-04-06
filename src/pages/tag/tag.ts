@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController,AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http, HttpModule,Headers } from '@angular/http';
 import { CadastrarTagPage } from '../cadastrar-tag/cadastrar-tag';
 import 'rxjs/add/operator/map';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the TagPage page.
@@ -22,9 +23,13 @@ export class TagPage {
   public tags: Array<Tag>;
   private url: string = "http://192.168.0.12:8090/tag/tags";  
   delete = "/delete";
+  alertC: AlertController;
 
-  constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
+
+  constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController,alertCtrl: AlertController) {
     this.delete = 'http://192.168.0.12:8090/tag/';
+    this.alertC = alertCtrl;
+
     this.Content();
   }
 
@@ -92,6 +97,36 @@ export class TagPage {
       // this.viewCtrl.dismiss();
       this.Content();
   
+  }
+
+  showConfirm() {
+    const confirm = this.alertC.create({
+      title: 'Sair',
+      message: 'Você deseja realmente SAIR?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Sair',
+          handler: () => {
+            console.log('Agree clicked');
+  
+            // this.app.getRootNav().setRoot( LoginPage );
+            // let rootNav = getRootNav(this.navCtrl);
+            // rootNav.setRoot(LoginPage);
+            //this.menu.close();
+            
+            this.navCtrl.setRoot(LoginPage  , { login: false} );
+
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 

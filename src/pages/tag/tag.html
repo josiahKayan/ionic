@@ -2,6 +2,8 @@
 
   <ion-navbar>
     <ion-title>Tags</ion-title>
+    <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
+
   </ion-navbar>
 
 </ion-header>
@@ -11,12 +13,14 @@
   <ion-list>
     <ion-item *ngFor="let tag of tags">
       
-      <h2>{{tag.Code}}</h2>
+        <div class="nome-curso">
+          <h2>{{tag.Code}}</h2>
+        </div>
       
-      
-
-      <button ion-button clear item-end (click)="detalhar(tag.TagId)">Detalhes</button>
-      <button ion-button clear item-end (click)="excluir(tag,tag.TagId);">Excluir</button>
+        <div class="edicoes">
+          <button ion-button clear item-end (click)="detalhar(tag.TagId)">Detalhes</button>
+          <button ion-button clear item-end (click)="excluir(tag,tag.TagId);">Excluir</button>
+        </div>
     </ion-item>
   </ion-list>
 

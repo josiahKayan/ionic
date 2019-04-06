@@ -20,11 +20,13 @@
             
       <div class="contact-modal">
 
-      <ion-list  *ngFor="let t of turmasList; let i = index" >
-              
-        <div id="options" (click)="close()" >
+        <div class="close-object" (click)="close()" >
           <ion-icon name="close-circle"></ion-icon>
         </div>
+
+      <ion-list  *ngFor="let t of turmasList; let i = index" >
+              
+       
         
                   <ion-item>
                     
@@ -36,14 +38,15 @@
 
                   </ion-item>
 
-                  <div class="right">
-                  <button ion-button (click)="dismiss()"  >
-                      Add
-                      
-                    </button>
-                  </div>
+                 
         
         </ion-list>
+
+        <div class="right">
+          <button ion-button (click)="dismiss()"  >
+              Add
+            </button>
+          </div>
 
       </div>
 

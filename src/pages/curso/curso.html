@@ -24,9 +24,13 @@
 
   <ion-list inset>
     <ion-item *ngFor="let curso of cursos; let i = index;">
-       {{ curso.Nome }} - {{curso.CursoId}}
-      <button ion-button clear item-end (click)="detalhar(curso.CursoId)">Detalhes</button>
-      <button ion-button clear item-end (click)="excluir(curso.CursoId,i);">Excluir</button>
+        <div class="nome-curso">
+          {{ curso.Nome }} - {{curso.CursoId}}
+        </div>
+        <div class="edicoes">
+          <button ion-button clear item-end (click)="detalhar(curso.CursoId)">Detalhes</button>
+          <button ion-button clear item-end (click)="excluir(curso.CursoId,i);">Excluir</button>
+        </div>
     </ion-item>
   </ion-list>
 

@@ -51,18 +51,11 @@
 </div>
 
     <ion-row>
-      <ion-col col-6>
-
-        <ion-item>
-          <ion-label stacked>tag</ion-label>
-          <ion-input type="text" [(ngModel)]='tagCode'></ion-input>
-        </ion-item>
-      
-      </ion-col>
         
       <ion-col col-6>
 
         <ion-list>
+          <div class="tag-class">
           <ion-item>
             <ion-label>Tags Disponíveis</ion-label>
             <ion-select [(ngModel)]="selected" (ionChange)="onSelectChange($event)">
@@ -71,6 +64,7 @@
               
             </ion-select>
           </ion-item>
+        </div>
         </ion-list>
 
       </ion-col>
@@ -80,12 +74,12 @@
 
   </ion-list>
 
-  <div padding [hidden]="save">
-    <button block (click)="salvarCurso()">Adicionar</button>
+  <div class="save" padding [hidden]="save">
+    <button  ion-button round  (click)="salvarCurso()">Adicionar</button>
   </div>
 
-  <div padding [hidden]="edit">
-    <button block (click)="editarCurso(alunoId)">Salvar Edição</button>
+  <div class="save" padding [hidden]="edit">
+    <button  ion-button round  (click)="editarCurso(alunoId)">Salvar Edição</button>
   </div>
 
 </ion-content>

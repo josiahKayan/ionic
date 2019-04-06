@@ -41,11 +41,12 @@ import { GeralComponent } from '../components/geral/geral';
 import {AboutPage} from '../pages/about/about';
 
 import {ContactPage} from '../pages/contact/contact';
-
+import { Network } from '@ionic-native/network/ngx';
 
 // import { Platform } from 'ionic-angular';
 
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { TurmaAlunoComponent } from '../components/turma-aluno/turma-aluno';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,9 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     NgxQRCodeComponent,
     GeralComponent,
     AboutPage,
-    ContactPage
+    ContactPage,
+    TurmaAlunoComponent
+    
 
   ],
   imports: [
@@ -109,7 +112,8 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     NgxQRCodeComponent,
     GeralComponent,
     AboutPage,
-    ContactPage
+    ContactPage,
+    TurmaAlunoComponent
 
   ],
   providers: [
@@ -120,7 +124,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     Push,
     Geolocation,
     NgxQRCodeComponent,
-
+    Network,
     BarcodeScanner
 
     // RedditServiceProvider,

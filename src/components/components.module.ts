@@ -10,6 +10,7 @@ import { GeraQrcodeComponent } from './gera-qrcode/gera-qrcode';
 import { HomeAlunoComponent } from './home-aluno/home-aluno';
 import { LerQrcodeComponent } from './ler-qrcode/ler-qrcode';
 import { GeralComponent } from './geral/geral';
+import { TurmaAlunoComponent } from './turma-aluno/turma-aluno';
 @NgModule({
 	declarations: [CadastrarProfessorComponent,
     CadastrarCursoComponent,
@@ -21,7 +22,8 @@ import { GeralComponent } from './geral/geral';
     GeraQrcodeComponent,
     HomeAlunoComponent,
     LerQrcodeComponent,
-    GeralComponent],
+    GeralComponent,
+    TurmaAlunoComponent],
 	imports: [],
 	exports: [CadastrarProfessorComponent,
     CadastrarCursoComponent,
@@ -33,6 +35,7 @@ import { GeralComponent } from './geral/geral';
     GeraQrcodeComponent,
     HomeAlunoComponent,
     LerQrcodeComponent,
-    GeralComponent]
+    GeralComponent,
+    TurmaAlunoComponent]
 })
 export class ComponentsModule {}

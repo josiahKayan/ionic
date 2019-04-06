@@ -6,6 +6,7 @@ import {CursoPage} from '../curso/curso';
 import 'rxjs/add/operator/map';
 import { TurmasComponent } from '../../components/turmas/turmas';
 import { LoginPage } from '../login/login';
+import { TurmaAlunoComponent } from '../../components/turma-aluno/turma-aluno';
 
 @IonicPage()
 @Component({
@@ -223,6 +224,14 @@ export class CadastrarCursoPage {
 
     let turmaModal = this.modal.create(TurmasComponent, { cursoId: this.cursoId, turmaId : id, pfId : i });
     turmaModal.present();
+
+  }
+
+  addAluno(id : number){
+    
+    let turmaModal = this.modal.create(TurmaAlunoComponent, {  turmaId : id});
+    turmaModal.present();
+
 
   }
 

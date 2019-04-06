@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController,AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http, HttpModule,Headers } from '@angular/http';
 import { CadastrarProfessorPage } from '../cadastrar-professor/cadastrar-professor';
 import 'rxjs/add/operator/map';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -15,11 +16,14 @@ export class ProfessorPage {
   public professores: Array<any>;
   private url: string = "http://192.168.0.12:8090/professor/professores";  
   delete = "/delete";
+  alertC: AlertController;
   
   
-  constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
+  constructor( public viewCtrl: ViewController,public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController,alertCtrl: AlertController) {
     this.delete = 'http://192.168.0.12:8090/professor/';
     this.Content();
+    this.alertC = alertCtrl;
+
   }
 
   Content(): void {
@@ -85,6 +89,38 @@ export class ProfessorPage {
       this.Content();
   
   }
+
+
+  showConfirm() {
+    const confirm = this.alertC.create({
+      title: 'Sair',
+      message: 'Você deseja realmente SAIR?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Sair',
+          handler: () => {
+            console.log('Agree clicked');
+  
+            // this.app.getRootNav().setRoot( LoginPage );
+            // let rootNav = getRootNav(this.navCtrl);
+            // rootNav.setRoot(LoginPage);
+            //this.menu.close();
+            
+            this.navCtrl.setRoot(LoginPage  , { login: false} );
+
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
 }
 
 

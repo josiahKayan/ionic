@@ -3,6 +3,8 @@
 
   <ion-navbar>
     <ion-title>Professores</ion-title>
+    <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
+
   </ion-navbar>
 
 </ion-header>
@@ -10,14 +12,18 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let professor of professores; let i = index ;">
+
+      
       <ion-thumbnail item-start>
         <!-- <img src="img/thumbnail-totoro.png"> -->
         <img src="https://s.aficionados.com.br/imagens/guerra-civil-2-portugues.jpg">
       </ion-thumbnail>
       <h2>{{professor.Nome}}</h2>
       <h3>{{professor.NomeCompleto}}</h3>
-      <button ion-button clear item-end (click)="detalhar(professor.ProfessorId)">Detalhes</button>
-      <button ion-button clear item-end (click)="excluir(professor.ProfessorId, i);">Excluir</button>
+      <div class="edicoes">
+        <button ion-button clear item-end (click)="detalhar(professor.ProfessorId)">Detalhes</button>
+        <button ion-button clear item-end (click)="excluir(professor.ProfessorId, i);">Excluir</button>
+    </div>
     </ion-item>
   </ion-list>
 

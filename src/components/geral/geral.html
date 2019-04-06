@@ -45,12 +45,18 @@
                     
     
                         <ion-item>
-                                <ion-avatar slot="start">
+                            <div class="div-nome-foto">
+                                <div class="div-nome-foto-foto">
+                                    <ion-avatar slot="start">
                                         <img src="{{ isNulo(p.Imagem) }}">
                                     </ion-avatar>
+                                </div>
+                                <div class="div-nome-foto-nome">
                                     <p>
-                                        {{p.Nome}}
+                                        {{p.NomeCompleto}}
                                     </p>
+                                </div>
+                            </div>
                             </ion-item>
     
                 </ion-col>
