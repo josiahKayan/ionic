@@ -11,8 +11,10 @@ ion-grid.grid {
 }
 
 ion-scroll {
-    height: 100%;
+    // height: 100%;
     margin-top: 12px;
+    height: 98%;
+
 }
 
 
@@ -35,4 +37,8 @@ ion-card.card-historico.card.card-md {
     /* margin-left: 18px; */
     white-space: normal !important;
     margin-left: 20px;
+}
+
+div#options {
+    color: cornflowerblue;
 }

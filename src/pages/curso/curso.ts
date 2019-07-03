@@ -40,7 +40,9 @@ export class CursoPage {
   }
 
  
-
+ngOnInit(){
+  this.fetchContent();
+}
  
 
   ionViewDidLoad(){
@@ -105,6 +107,8 @@ export class CursoPage {
             (this.cursos).splice(i,1);
             alert('The course was removed');
             loading.dismiss();
+
+            this.fetchContent();
 
           }
         }

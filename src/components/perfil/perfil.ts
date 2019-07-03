@@ -19,4 +19,8 @@ export class PerfilComponent {
     this.text = 'Hello World';
   }
 
+  editarFoto(){
+    alert('Vamos editar a foto');
+  }
+
 }

@@ -112,6 +112,26 @@ export class ResumoChamadaComponent {
   }
 
 
+  verificaQr(t : number){
+    if(t == 1){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+
+  verificaRf(t : number){
+    if(t == 1){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+
+
+
   carregaListaPresentes(idPresenca :number,idTurma:number, idAluno:boolean){
 
     if((this.idPresenca != 0 || this.idPresenca != undefined)){
@@ -252,7 +272,7 @@ export class ResumoChamadaComponent {
       
               // alert("Antes de entrar na data");
 
-              if( info.data.dia === dia && info.data.mes === mes && info.data.ano === ano ){
+              if( info.data.dia === dia && info.data.mes === mes && info.data.ano === ano && ( info.data.hora === hora || info.data.hora === (hora + 1)  ) ){
 
                   // alert("Vamos testar");
                   // alert("lat lido: "+Math.floor(info.position.latitude));
@@ -288,7 +308,7 @@ export class ResumoChamadaComponent {
                     else{
                       let alert = this.alertCtrl.create({
                         title: 'Erro',
-                        subTitle: 'Fora do raio de posição!',
+                        subTitle: 'Houve algum problema com a sua localização!',
                         buttons: ['Ok']
                       });
                       alert.present();

@@ -8,3 +8,32 @@ resumo-chamada {
 
 }
 
+ion-icon.iconback.icon.icon-md.ion-md-checkmark-circle.item-icon {
+    color: #57b357;
+}
+
+ion-icon.iconred.icon.icon-md.ion-md-close-circle.item-icon {
+    color: #c13e3e;
+}
+
+ion-icon.left.icon.icon-md.ion-md-wifi.item-icon {
+    color: #27419e;
+    font-size: larger;
+}
+
+ion-icon.left.icon.icon-md.ion-md-qr-scanner.item-icon {
+    color: #27419e;
+    font-size: larger;
+}
+
+.right {
+    margin-right: 10PX;
+    margin-top: -25px;
+}
+
+.dright {
+    margin-bottom: -1px;
+}
+ion-card.resumo-top.card.card-md {
+    margin-top: 35px;
+}

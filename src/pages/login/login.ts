@@ -6,8 +6,8 @@ import { TabsPage } from '../tabs/tabs';
 import { HomeProfessorPage } from '../home-professor/home-professor';
 import { HomeAlunoPage } from '../home-aluno/home-aluno';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import { Events } from 'ionic-angular';
-import { Network } from '@ionic-native/network/ngx';
+import { Events, Platform } from 'ionic-angular';
+import { Network } from '@ionic-native/network';
 
 @IonicPage()
 @Component({
@@ -26,14 +26,18 @@ export class LoginPage {
   alert:AlertController;
   network: Network;
   toast: ToastController;
+  platform: Platform;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http,
      ppush : Push, public alrt:AlertController,public events: Events,net: Network
-     ,public t: ToastController ) {
+     ,public t: ToastController, ptform: Platform ) {
 
     this.toast = t;
 
     this.network = net;
+
+    this.platform = ptform;
 
     // this.basepath = "httpdd://192.168.0.13:8090/usuario/login";
     this.basepath = "http://192.168.0.12:8090/usuario/login";
@@ -62,6 +66,21 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
+    
+    
+    this.platform.ready().then(()=>{
+
+
+      this.network.onConnect().subscribe(()=>{
+        // alert('Conectado');
+      });
+
+      this.network.onDisconnect().subscribe(()=>{
+        alert('Telefone sem conexão com a internet');
+      });
+
+    });
+    
     console.log('ionViewDidLoad LoginPage');
     let elements = document.querySelectorAll(".tabbar");
 
@@ -70,6 +89,7 @@ export class LoginPage {
             elements[key].style.display = 'none';
         });
     }
+
 
   
   }
@@ -153,7 +173,10 @@ connectSubscription.unsubscribe();
 
 
 
+
   public login(){
+
+    
 
     let usuario = new Usuario();
 

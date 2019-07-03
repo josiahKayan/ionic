@@ -35,7 +35,7 @@ export class CadastrarCursoPage {
    viewCt : ViewController) {
       this.basepath = "http://192.168.0.12:8090/curso/addcurso";
       this.save = false;
-      this.edit = true;
+      this.edit = false;
       this.id = navParams.get('id');
       this.carrega();
       this.modal = modal;
@@ -44,6 +44,7 @@ export class CadastrarCursoPage {
   }
 
   novaTurma(){
+    
     this.presentTurmaModal();
   }
 
@@ -93,9 +94,14 @@ export class CadastrarCursoPage {
 
   carrega() {
 
-    
+    this.edit = true;
+    this.save = false;
 
     if(!(this.id == "" || this.id == undefined)){
+
+      this.edit = true;
+      this.save = false;
+
 
       let loading = this.loadingCtrl.create({
         content: 'Carregando...'

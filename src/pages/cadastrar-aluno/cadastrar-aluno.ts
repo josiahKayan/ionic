@@ -150,7 +150,7 @@ export class CadastrarAlunoPage {
     this.nome = objAluno.Nome ;
     this.nomeCompleto = objAluno.NomeCompleto;
     this.imagem = objAluno.Imagem;
-    this.dataNascimento = objAluno.DataNascimento;
+    this.dataNascimento = this.formataData( objAluno.DataNascimento);
     this.idade = objAluno.Idade;
 
     this.email = objAluno.Usuario.Email;
@@ -169,6 +169,22 @@ export class CadastrarAlunoPage {
 
     }
     
+  }
+
+  formataData(data: string){
+    var tValue = data.indexOf('T')+1 ; 
+    var finalLength = data.length ;
+
+    var final = data.slice(tValue,finalLength) ;
+    return final;
+  }
+
+  formataDataF(data: string){
+    var tValue = data.indexOf('T')+1 ; 
+    var finalLength = data.length ;
+
+    var final = data.slice(tValue,finalLength) ;
+    return final;
   }
 
   editarCurso( id: string){

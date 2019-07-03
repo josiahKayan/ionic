@@ -130,7 +130,7 @@ export class ListaChamadaComponent {
   calculaDia(dia:number,mes:number,ano:number){
     var d = new Date(mes+'-'+dia+'-'+ano);
     var n = d.getDay() - 1;
-    let arrayWeek = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
+    let arrayWeek = ['segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo'];
     var ttt =  arrayWeek[n];
     return ttt ;
   }

@@ -39,28 +39,39 @@
   <ion-label>Turmas</ion-label>
   <ion-list inset>
     <ion-item *ngFor="let turma of turmas; let i = index;">
-      {{ turma.NomeTurma }} - {{turma.TurmaId}}
+      <div class="turm-nome">
+      {{ turma.NomeTurma }}
+      <!-- {{ turma.NomeTurma }} - {{turma.TurmaId}} -->
+
+      </div>
       <div class="edicoes">
           <button ion-button clear item-end (click)="addAluno(turma.TurmaId)">Add Aluno</button>
         <button ion-button clear item-end (click)="detalhar(turma.TurmaId,turma.ProfessorId)">Detalhes</button>
         <button ion-button clear item-end (click)="excluir(turma.TurmaId,i);">Excluir</button>
       </div>
    </ion-item>
+    <!-- <ion-fab right bottom>
+      <button ion-fab color="primary" text="Nova Turma" (click)="novaTurma()">+</button>
+    </ion-fab> -->
+    <div class="add-div">
+      <button ion-button clear item-end (click)="novaTurma()">Nova Turma</button>
+    </div>
   </ion-list>
 
-    <div padding  >
-      <button ion-button block (click)="salvarCurso()">Adicionar</button>
-    </div>
+    
 
   </ion-card>
 
-  <ion-fab right bottom>
-      <button ion-fab color="primary" text="Nova Turma" (click)="novaTurma()">+</button>
-    </ion-fab>
   
-    <!-- <div padding [hidden]="false" >
+  
+    <div padding [hidden]="edit" >
       <button class="button-salvar" ion-button block  (click)="editarCurso(cursoId)">Salvar Edição</button>
-    </div> -->
+    </div>
+
+    <div padding [hidden]="save"  >
+        <button class="button-salvar" ion-button block (click)="salvarCurso()">Adicionar</button>
+    </div>
+
 </ion-content>
 
   

@@ -33,11 +33,13 @@
     </ion-item>
     <ion-item>
         <ion-label stacked>Hora Inicial</ion-label>
-        <ion-input type="text" [(ngModel)]='horaInicial'></ion-input>
+        <ion-datetime displayFormat="HH:mm" [(ngModel)]="horaInicial"></ion-datetime>
+
     </ion-item>
     <ion-item>
         <ion-label stacked>Hora Final</ion-label>
-        <ion-input type="text" [(ngModel)]='horaFinal'></ion-input>
+        <ion-datetime displayFormat="HH:mm" [(ngModel)]="horaFinal"></ion-datetime>
+
     </ion-item>
 
     <ion-list>

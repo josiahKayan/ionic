@@ -2,7 +2,25 @@ page-tag {
 
 }
 
+.exit-icon {
+    color: white;
+}
+
+.titulo {
+    margin-right: 0px; 
+    margin-top: 10px;
+}
 
 ion-fab {
     margin-bottom: 50px;
+}
+
+.ativo {
+    border-radius: 10px;
+    background: #80808026;
+}
+
+.nao-ativo {
+    border-radius: 10px;
+    background: #ffffff;
 }

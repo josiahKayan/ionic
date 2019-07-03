@@ -2,12 +2,21 @@
 <ion-header>
 
   <ion-navbar>
+      <div class="titulo-top">
+          <div class="titulo">
     <ion-title>Alunos</ion-title>
-    <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
+  </div>
+
+    <div class="exit-icon">
+      <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
+    </div>
+  </div>
 
   </ion-navbar>
 
 </ion-header>
+
+
 
 <ion-content padding>
 
@@ -15,12 +24,15 @@
 
   <ion-list>
     <ion-item *ngFor="let aluno of alunos; let i = index;" >
-      <ion-thumbnail item-start>
-        <!-- <img src="img/thumbnail-totoro.png"> -->
+      <!-- <ion-thumbnail item-start>
         <img src="https://cdn.vox-cdn.com/thumbor/s_HqWQZ-SI1MqQwV1eXvtgBwnGc=/0x0:578x327/1200x800/filters:focal(243x118:335x210)/cdn.vox-cdn.com/uploads/chorus_image/image/56976933/halloween_2017_169.0.jpg">
-      </ion-thumbnail>
-      <h2>{{aluno.Nome}}</h2>
-      <h3>{{aluno.NomeCompleto}}</h3>
+      </ion-thumbnail> -->
+      <div class="aluno-nomes">
+        <h2>{{aluno.Nome}}</h2>
+        <h3>{{aluno.NomeCompleto}}</h3>
+        <h3>{{aluno.Tag.Code}}</h3>
+    </div>
+
       <div class="edicoes">
           <button ion-button clear item-end (click)="detalhar(aluno.AlunoId)">Detalhes</button>
           <button ion-button clear item-end (click)="excluir(aluno.AlunoId, i);">Excluir</button>

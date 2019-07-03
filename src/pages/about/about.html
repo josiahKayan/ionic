@@ -52,6 +52,9 @@
                             <h2>
                               {{d}}
                             </h2>
+                            <div class="hora">
+                                (8:00)
+                            </div>
                         </ion-item>
         
                     </ion-col>
@@ -62,9 +65,12 @@
                         
                           <ion-slide >
                             <div id="simbolo">
-                              <ion-icon style="background: #d7efcf" *ngIf="lPresencaDia[o].Presente == 1 " name="checkmark-circle"></ion-icon>
-
-                              <ion-icon style="background: #e9c5be" *ngIf="lPresencaDia[o].Presente == 0 " name="close-circle"></ion-icon>
+                                    <div id="simbolo-ok">
+                                        <ion-icon style="background: #cfefe2" *ngIf="lPresencaDia[o].Presente == 1 " name="checkmark-circle"></ion-icon>
+                                    </div>
+                                    <div id="simbolo-nok">
+                                        <ion-icon class="simbolo-nok" style="background: #e9c5be" *ngIf="lPresencaDia[o].Presente == 0 " name="close-circle-outline"></ion-icon>
+                                    </div>
                             </div>
                           </ion-slide>
                           
@@ -80,7 +86,11 @@
                             <div id="simbolo">
                               <ion-icon style="background: #d7efcf" *ngIf="lPresencaDia[o].Presente == 1 " name="checkmark-circle"></ion-icon>
 
-                              <ion-icon style="background: #e9c5be" *ngIf="lPresencaDia[o].Presente == 0 " name="close-circle"></ion-icon>
+                              <div id="simbolo-nok">
+                                        
+                                <ion-icon style="background: #e9c5be" *ngIf="lPresencaDia[o].Presente == 0 " name="close-circle"></ion-icon>
+                            
+                                </div>
                             </div>
                           </ion-slide>
                           

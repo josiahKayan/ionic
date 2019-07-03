@@ -52,8 +52,12 @@
           
         </ion-list>
 
+        <div class="aviso"  [hidden]="listaMensagem == 0 ? false : true  "  >
+          Não existem publicações no seu Mural.
+        </div>
 
-        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" >
+
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [hidden]="listaMensagem == 0 ? true : false  " >
           <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais dados..." ></ion-infinite-scroll-content>
         </ion-infinite-scroll>
 

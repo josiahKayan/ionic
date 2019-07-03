@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler,Platform } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { ProfessorPage } from '../pages/professor/professor';
@@ -41,12 +41,18 @@ import { GeralComponent } from '../components/geral/geral';
 import {AboutPage} from '../pages/about/about';
 
 import {ContactPage} from '../pages/contact/contact';
-import { Network } from '@ionic-native/network/ngx';
 
-// import { Platform } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { TurmaAlunoComponent } from '../components/turma-aluno/turma-aluno';
+
+// import { SQLite } from "@ionic-native/sqlite/ngx";
+
+import { SQLite } from "@ionic-native/sqlite";
+import { IonicStorageModule } from "@ionic/storage" ;
+
+import {Network} from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -83,6 +89,7 @@ import { TurmaAlunoComponent } from '../components/turma-aluno/turma-aluno';
   imports: [
     BrowserModule,
     HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -113,10 +120,11 @@ import { TurmaAlunoComponent } from '../components/turma-aluno/turma-aluno';
     GeralComponent,
     AboutPage,
     ContactPage,
-    TurmaAlunoComponent
+    TurmaAlunoComponent,
 
   ],
   providers: [
+    
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -125,6 +133,8 @@ import { TurmaAlunoComponent } from '../components/turma-aluno/turma-aluno';
     Geolocation,
     NgxQRCodeComponent,
     Network,
+    IonicStorageModule,
+    Camera,
     BarcodeScanner
 
     // RedditServiceProvider,

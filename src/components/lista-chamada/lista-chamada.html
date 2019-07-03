@@ -37,15 +37,15 @@
 <ion-scroll scrollY="true">
 <ion-card >
     
-  <ion-list >
-  <ion-list *ngFor="let p of listaPresenca" (click)="abreListaChamada(p.ListaPresencaId,p.Dia,p.Mes,p.Ano)"> 
+  <ion-list class="icones-bordas" *ngFor="let p of listaPresenca" (click)="abreListaChamada(p.ListaPresencaId,p.Dia,p.Mes,p.Ano)"> 
+    <ion-card>
     <ion-item>
-      <ion-icon name="paper" item-start large></ion-icon>
-      <h2>{{p.Dia}} - {{p.Mes}} - {{p.Ano}}</h2>
-      <p>{{calculaDia(p.Dia,p.Mes,p.Ano)}} , {{p.Dia}}  de {{calculaMes(p.Mes)}} de {{p.Ano}}</p>
-    </ion-item>
+        <ion-icon class="iconback" name="paper" item-start large></ion-icon>
+        <h2>{{p.Dia}} - {{p.Mes}} - {{p.Ano}}</h2>
+        <p>{{calculaDia(p.Dia,p.Mes,p.Ano)}} , {{p.Dia}}  de {{calculaMes(p.Mes)}} de {{p.Ano}}</p>
+      </ion-item>
+    </ion-card>
   </ion-list>
-</ion-list>
 
 </ion-card>
 </ion-scroll>

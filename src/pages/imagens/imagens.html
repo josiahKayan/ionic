@@ -1,0 +1,53 @@
+<!--
+  Generated template for the ImagensPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="box-image">
+
+<ion-header>
+
+  <div class="popover">
+      <ion-navbar>
+        <!-- <ion-title (click)="sair()">Sair</ion-title>
+        <ion-title (click)="tirarFoto()"> Tirar Foto </ion-title>
+        <ion-title (click)="selecionarFoto()">Selecionar Imagens</ion-title> -->
+    
+    <div class="options-div">
+      <div class="sair">
+        <ion-icon (click)="sair()" name="close-circle">   Sair</ion-icon>
+      </div>
+
+      <div class="foto">
+        <ion-icon (click)="tirarFoto()" name="camera">   Foto</ion-icon>
+      </div>
+
+      <div class="selecionar">
+        <ion-icon (click)="selecionarFoto()" name="images">   Imagens</ion-icon>
+      </div>
+    </div>
+
+      </ion-navbar>
+  </div>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="img-perfil-img">
+      <div class="img-perfil">
+        <img [src]="image">
+        <!-- <img src="https://recantododragao.com.br/wp-content/uploads/2016/08/Ash-Kecthum-XYZ.jpg"> -->
+
+      </div>
+
+      <div class="img-button">
+        <button ion-button (click)="salvarFoto()" >Ok</button>
+      </div>
+  </div>
+
+</ion-content>
+
+</div>

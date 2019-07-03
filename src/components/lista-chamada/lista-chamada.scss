@@ -1,14 +1,16 @@
 lista-chamada {
 
-
-
     ion-scroll {
-        height: 500px;
+        height: 400px;
         }
 
 }
 
 ion-card.card-historico.card.card-md {
-    margin-top: 85px;
+    margin-top: 65px;
 }
 
+ion-icon.iconback.icon.icon-md.ion-md-paper.item-icon {
+    /* background-color: #080808; */
+    color: #488aff;
+}

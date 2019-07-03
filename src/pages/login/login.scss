@@ -8,8 +8,12 @@ page-login {
 }
 
 
+
+
 page-login.ion-page.show-page {
         background: #488ABF;
+        // background-image: url('../assets/imgs/teste2.jpg');
+        
 }
 
 ion-card.card-login.card.card-md {
@@ -31,4 +35,32 @@ ion-card.card-login.card.card-md {
 button.button.button-md.button-default.button-default-md.button-block.button-block-md {
         border-radius: 10px;
         height: 45px;
+    }
+
+
+    ion-card.card-login.card.card-md {
+        background-color: #dcdada85;
+    }
+
+    ion-item.item.item-block.item-md.item-input.item-label-floating.ng-untouched.ng-pristine.ng-valid {
+        background-color: #dcdada00;
+    }
+
+    .item-md {
+        padding-left: 16px;
+        padding-right: 0;
+        position: relative;
+        font-size: 1.6rem;
+        font-weight: normal;
+        text-transform: none;
+        color: #FFFF;
+        background-color: #dcdada00;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    input.text-input.text-input-md {
+        color: black;
     }

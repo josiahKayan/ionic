@@ -14,12 +14,9 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-item></ion-item>
-<ion-item></ion-item>
-
 <ion-scroll scrollY="true">
 
-<ion-card>
+<ion-card class="resumo-top">
 
     <ion-card>
         <!-- Float the icon left -->
@@ -43,10 +40,15 @@
   <ion-card>
       <ion-list *ngFor="let l of ListaPresentes" > 
         <ion-item>
-          <ion-icon name="checkmark-circle" item-start large></ion-icon>
+          <ion-icon class="iconback" name="checkmark-circle" item-start large></ion-icon>
           <h2 [hidden]="naopresente">Você ainda não está presente.</h2>
           <h2 [hidden]="presente">Presença ok</h2>
+          <div class="dright">
           <h2 [hidden]="mostranome">{{l.Aluno.NomeCompleto}}</h2>
+        </div>
+          <div class="right"><ion-icon class="left" [hidden]="verificaQr(l.IsQRCODE)" name="qr-scanner"> QRCode</ion-icon>
+          <ion-icon class="left" [hidden]="verificaRf(l.IsRFID)" name="wifi"> Rfid</ion-icon>
+        </div>
 
           </ion-item>
       </ion-list>
@@ -73,7 +75,7 @@
     <ion-card [hidden]="esconde">
       <ion-list *ngFor="let f of listaFaltosos" > 
         <ion-item>
-          <ion-icon name="close-circle" item-start large></ion-icon>
+          <ion-icon class="iconred" name="close-circle" item-start large></ion-icon>
           <h2>{{f.NomeCompleto}}</h2>
         </ion-item>
       </ion-list>

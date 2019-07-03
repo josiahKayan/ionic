@@ -2,24 +2,34 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Professores</ion-title>
-    <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
-
+      <div class="titulo-top">
+          <div class="titulo">
+            <ion-title>Professores</ion-title>
+          </div>
+          <div class="exit-icon">
+            <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
+          </div>
+      </div>
   </ion-navbar>
 
 </ion-header>
+
+
+
 
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let professor of professores; let i = index ;">
 
       
-      <ion-thumbnail item-start>
+      <!-- <ion-thumbnail item-start>
         <!-- <img src="img/thumbnail-totoro.png"> -->
-        <img src="https://s.aficionados.com.br/imagens/guerra-civil-2-portugues.jpg">
-      </ion-thumbnail>
+        <!-- <img src="https://s.aficionados.com.br/imagens/guerra-civil-2-portugues.jpg">
+      </ion-thumbnail> --> 
+      <div class="professor-nomes">
       <h2>{{professor.Nome}}</h2>
       <h3>{{professor.NomeCompleto}}</h3>
+    </div>
       <div class="edicoes">
         <button ion-button clear item-end (click)="detalhar(professor.ProfessorId)">Detalhes</button>
         <button ion-button clear item-end (click)="excluir(professor.ProfessorId, i);">Excluir</button>

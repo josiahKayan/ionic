@@ -12,37 +12,33 @@
 <ion-scroll scrollY="true">
     <ion-card >
             
-      <div class="contact-modal">
+    <div class="contact-modal">
 
         <div class="close-object" (click)="close()" >
           <ion-icon name="close-circle"></ion-icon>
         </div>
 
-      <ion-list  *ngFor="let a of alunos; let i = index" >
-              
-       
-        
-                  <ion-item>
-                    
-                    <ion-label>{{a.NomeCompleto}}</ion-label>
-                    <ion-checkbox checked="a.Selected" [(ngModel)]="a.Selected" ></ion-checkbox>
-                    
-                  </ion-item>
-
-                 
-        
+        <ion-list  *ngFor="let a of alunos; let i = index" >
+                         
+            <div class="nome-aluno">
+                <ion-checkbox checked="a.Selected" [(ngModel)]="a.Selected" ></ion-checkbox>
+           
+                {{a.NomeCompleto}}
+          
+            </div>
+         
         </ion-list>
 
         <div class="right">
           <button ion-button (click)="addAlunos()"  >
               Add
             </button>
-          </div>
+        </div>
 
-      </div>
+    </div>
 
-      </ion-card>
+    </ion-card>
             
-    </ion-scroll>
+  </ion-scroll>
               
               

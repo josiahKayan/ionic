@@ -25,7 +25,7 @@ export class HomeProfessorPage {
   turmas : any;
   page = 1;
   perPage = 10;
- 
+ public load : boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http,public loadingCtrl: LoadingController
     ,alertCtrl: AlertController, modal: ModalController ) {
@@ -47,6 +47,9 @@ export class HomeProfessorPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeProfessorPage');
+    setTimeout(() => {
+      this.load = false;
+    }, 3000);
   }
 
   publicar(){
@@ -120,7 +123,11 @@ export class HomeProfessorPage {
             // this.imgTitulo = "assets/imgs/blank-profile-default.png";     
             this.listaMensagem = result;
 
-            loading.dismiss();
+            loading.dismiss().then(()=>{
+
+            }).catch(err =>{
+              console.log(err);
+            });
           
         }
       );
@@ -149,7 +156,12 @@ export class HomeProfessorPage {
 
   SelecionarTurma() {
     let profileModal = this.modal.create(ContactPage );
-    profileModal.present();
+    profileModal.present().then(()=>{
+      console.log("r");
+      
+    }).catch(err =>{
+      console.log(err);
+    });
 
     profileModal.onDidDismiss(data => {  
       console.log(data);

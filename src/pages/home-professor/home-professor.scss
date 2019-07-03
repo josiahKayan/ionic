@@ -1,5 +1,54 @@
 page-home-professor {
 
+  .skeleton-card-publicacao{
+    background-color: #d3d3d369;
+    animation: skeleton-blink 1.8s ease infinite;
+
+  }
+
+  .skeleton-card-publicacao-text {
+    color: #bdbdbd;
+    background-color: currentColor;
+    margin-right: 20px;
+    margin-left: 20px;
+    animation: skeleton-blink 1.8s ease infinite;
+
+}
+
+button.skeleton-card-publicacao-button.disable-hover.item-button.button.button-md.button-default.button-default-md {
+  background-color: #bdbdbd;
+  color: #bdbdbd;
+  animation: skeleton-blink 1.8s ease infinite;
+
+}
+
+ion-icon.skeleton-person-add-icon.icon.icon-md.ion-md-person-add.item-icon {
+  color: #bdbdbd;
+  margin-top: -30px;
+  animation: skeleton-blink 1.8s ease infinite;
+
+}
+ 
+ion-input.skeleton-card-publicacao-form-titulo.input.input-md.ng-untouched.ng-pristine.ng-valid {
+  background: #bdbdbd;
+  animation: skeleton-blink 1.5s ease infinite;
+
+}
+ion-input.skeleton-card-publicacao-form-menssage.input.input-md.ng-untouched.ng-pristine.ng-valid {
+  background-color: #bdbdbd;
+  animation: skeleton-blink 1.8s ease infinite;
+
+}
+
+@keyframes skeleton-blink {
+  0%{ opacity: 1;}
+  20%{ opacity: .7;}
+  30%{ opacity: 1;}
+  70%{ opacity: 0;}
+  95%{ opacity: 1;}
+
+}
+
 }
 
 ion-icon {
@@ -50,4 +99,19 @@ ion-card.card-mensagens.card.card-md {
 
 ion-icon.icon.icon-md.ion-md-person-add.item-icon {
   color: #488aff;
+}
+
+ion-card.card-publicacao.card.card-md {
+  border-radius: 10px;
+  background-color: #bdc3bd17;
+}
+
+.organizador-card {
+  /* background-color: aliceblue; */
+  background-color: #bdc3bd17;
+}
+
+.aviso {
+  margin-left: 20px;
+  margin-top: 18px;
 }

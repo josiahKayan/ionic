@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http, HttpModule, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Events } from 'ionic-angular';
 
 /**
  * Generated class for the PerfilPage page.
@@ -27,20 +29,32 @@ export class PerfilPage {
   fullusername : string;
   myBirthday : string;
   Img : string;
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
+  camera : Camera;
+  image:string;
+  popover : PopoverController;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController,
+  camera : Camera, pop: PopoverController,public events: Events) {
 
     let idd =localStorage.getItem('id');
     this.id = idd;
     this.carrega();
     this.save = false;
     this.edit = true;
+    this.camera = camera;
+    this.popover = pop;
 
+    events.subscribe('imagem:set', ev => {
+      this.Img = ev;
+    });
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilPage');
+
+    
+
   }
 
   carrega() {
@@ -99,8 +113,40 @@ export class PerfilPage {
     
   }
 
-  editarFoto(){
-    alert("Abrir Opcoes Tirar foto ou galeria");
+  editarFoto = ev =>{
+    //Adicionar aqui um modal
+
+    const popover = this.popover.create('ImagensPage');
+
+    popover.present(ev);
+
+    // const options: CameraOptions = {
+    //   quality: 100,
+    //   destinationType: this.camera.DestinationType.FILE_URI,
+    //   encodingType: this.camera.EncodingType.JPEG,
+    //   mediaType: this.camera.MediaType.PICTURE,
+    //   allowEdit:true,
+    //   cameraDirection:0,
+    //   correctOrientation:false,
+    //   saveToPhotoAlbum:true,
+    //   sourceType:1,
+    //   targetHeight:800,
+    //   targetWidth:800
+    // }
+
+    // //Tirar foto
+    // options.sourceType = 1;
+    // this.camera.getPicture(options).then( foto =>{
+    //   this.image = `data/png;base64,${foto}`;
+    // }).catch(err => console.log(err));
+
+    //Selecionar Câmera
+    // options.sourceType = 0;
+    // this.camera.getPicture(options).then( foto =>{
+    //   this.image = `data/png;base64,${foto}`;
+    // }).catch(err => console.log(err));
+
+
   }
 
   salvarPerfil(){
@@ -126,6 +172,9 @@ export class PerfilPage {
           alert("Perfil Editado com sucesso!!");
         });
   }
+
+
+  
 
 }
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { App,Platform,AlertController,NavController ,MenuController , Nav} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from "@ionic/storage" ;
 
 import { Http, HttpModule, Headers } from '@angular/http';
 import { LoginPage} from '../pages/login/login';
@@ -25,11 +26,11 @@ export class MyApp {
   http:Http;
   fFoto:string;
   fName:string;
-
+  storage : Storage;
   
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, alertCtrl: AlertController, app: App
-  ,menu :MenuController, public htp: Http,public events: Events) {
+  ,menu :MenuController, public htp: Http,public events: Events, str : Storage) {
 
 
     platform.ready().then(() => {
@@ -42,12 +43,26 @@ export class MyApp {
       this.menu = menu;
       this.http = htp;
       splashScreen.hide();
+
     
+    }).catch(err=>{
+      console.log(err);
     });
 
     events.subscribe('menu:opened', () => {
       this.setMenu();
     });
+
+    this.storage = str;
+
+    // this.storage.get('nomefoto').then( nome=>{
+      
+    //   this.fFoto =nome;  
+
+    // });
+
+    this.setMenu();
+
 
   }
 
@@ -55,7 +70,18 @@ export class MyApp {
 
   setMenu(){
 
-    this.fFoto = "assets/imgs/blank-profile-default.png";
+    // this.storage.get('nomefoto').then( nome=>{
+      
+    //   this.fFoto =nome;  
+
+    // });
+
+    if( this.fFoto == undefined || this.fFoto ==null  ){
+      this.fFoto = "assets/imgs/blank-profile-default.png";
+
+    }
+    
+
     
     this.fName = localStorage.getItem('NomeCompleto');
 
@@ -132,8 +158,16 @@ menuClosed() {
             localStorage.clear();
             // this.navCtrl.setRoot(LoginPage);
 
-            this.navCtrl.insert(0,LoginPage);
-            this.navCtrl.popToRoot();
+            this.navCtrl.insert(0,LoginPage).then( ()=>{
+              
+              setTimeout(() => {
+                this.navCtrl.popToRoot().then( ()=>{
+
+                });
+              }, 1000);
+              
+            });
+            
 
           }
         }
@@ -146,18 +180,30 @@ menuClosed() {
   abrirPerfil(){
 
     var i = this.id;
-    this.menu.close();
-    this.navCtrl.push(PerfilPage);
+    this.menu.close().then( ()=>{
+      this.navCtrl.push(PerfilPage).then( ()=>{
+
+      });
+    });
+    
   }
 
   abrirTurmas(){
-    this.menu.close();
-    this.navCtrl.push(TurmasPage);
+    this.menu.close().then( ()=>{
+      this.navCtrl.push(TurmasPage).then( ()=>{
+
+      });
+    });
+    
   }
 
   irHome(){
-    this.menu.close();
-    this.navCtrl.push(HomeProfessorPage);
+    this.menu.close().then( ()=>{
+      this.navCtrl.push(HomeProfessorPage).then( ()=>{
+
+      });
+    });
+    
   }
 
   

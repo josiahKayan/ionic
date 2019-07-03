@@ -54,6 +54,14 @@ export class TagPage {
 
   }
 
+  ngOnInit(){
+    this.Content();
+  }
+
+  ionViewDidLeave(){
+    this.Content();
+  }
+
   novo():void{
     this.navCtrl.push(CadastrarTagPage);
   }
@@ -64,17 +72,22 @@ export class TagPage {
 
   excluir( tag: Tag, id : string){
 
+    if(tag.Status == true ){
+      alert('Impossível excluir, pois a TAG está referenciado a um aluno');
+    }
+    else{
+
     let loading = this.loadingCtrl.create({
       content: 'Carregando...'
     });
-
-    loading.present();
 
     let headers = new Headers();
     headers.append('Access-Control-Allow-Origin' , '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE,PUT');
     headers.append('Accept','application/json');
     headers.append('content-type','application/json');
+
+    loading.present();
 
     this.http.get(this.delete+'delete/'+id  ,{ headers: headers })
       .map(
@@ -86,6 +99,8 @@ export class TagPage {
             loading.dismiss();
             let index = this.tags.indexOf(tag);
           
+            this.Content();
+
               if(index > -1){
                 this.tags.splice(index, 1);
                 alert('The tag was removed');
@@ -96,7 +111,7 @@ export class TagPage {
       );
       // this.viewCtrl.dismiss();
       this.Content();
-  
+    }
   }
 
   showConfirm() {
@@ -129,7 +144,7 @@ export class TagPage {
     confirm.present();
   }
 
-
+  
 }
 
 
@@ -137,6 +152,6 @@ export class TagPage {
 export class Tag {
   tagId: string;
   code: string;
-  status: boolean;
+  Status: boolean;
   
 }

@@ -4,6 +4,8 @@ import { Http, HttpModule, Headers } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { CadastrarCursoPage } from '../../pages/cadastrar-curso/cadastrar-curso';
 import { CursoPage } from '../../pages/curso/curso';
+import { TabsPage } from '../../pages/tabs/tabs';
+
 /**
  * Generated class for the TurmasComponent component.
  *
@@ -93,8 +95,8 @@ export class TurmasComponent {
           this.nome = result.NomeTurma ;
           this.dataInicial = result.DataInicio ;
           this.dataFinal = result.DataTermino ;
-          this.horaInicial = result.HoraInicial ;
-          this.horaFinal = result.HoraFinal;
+          this.horaInicial = this.formataData( result.HoraInicial );
+          this.horaFinal = this.formataData(result.HoraFinal);
 
           loading.dismiss();
           
@@ -105,6 +107,15 @@ export class TurmasComponent {
     
   }
 
+  formataData(data: string){
+    var tValue = data.indexOf('T')+1 ; 
+    var finalLength = data.length ;
+
+    var final = data.slice(tValue,finalLength) ;
+    return final;
+  }
+
+  
 
   editarTurma( id: string){
     
@@ -186,7 +197,7 @@ export class TurmasComponent {
             console.log(JSON.stringify(result));
             loading.dismiss();
             this.navCtrl.pop();
-            this.nav.push(CursoPage);
+            this.nav.push(TabsPage);
             
           }
         }

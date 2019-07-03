@@ -65,6 +65,11 @@ salvarCurso() {
     
 }
 
+ionViewDidLeave(){
+  this.navCtrl.push(TagPage);
+}
+
+
 carrega() {
 
   if(!(this.id == "" || this.id == undefined)){

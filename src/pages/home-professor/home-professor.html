@@ -16,102 +16,180 @@
 </ion-header>
 
 <ion-content padding>
-    <div class="conteudo">
+  <div [ngSwitch]="load">
     
-    <ion-card class="card-publicacao">
+    <div *ngSwitchCase="true">
 
-        <div class="card-publicacao-text">
-          <ion-label stacked>Escreva uma notificação para os seus alunos</ion-label>
-        </div>
+        <ion-card class="skeleton-card-publicacao">
 
-          <div class="card-publicacao-form">
-            
-            <ion-item>
-              <ion-label floating>Título</ion-label>
-              <ion-input type="text" [(ngModel)]='titulo'></ion-input>
-            </ion-item>
-          
-            <ion-item>
-              <ion-label floating>Mensagem</ion-label>
-              <ion-input type="text" [(ngModel)]='publicacao'></ion-input>
-            </ion-item>
-          
-          </div>
-
-            <ion-item padding>
-              <!-- <div class="card-publicacao-publicar"> -->
-                <div>
-                  <button ion-button (click)="publicar()">Publicar</button>
-              </div>
-              
-                  <div class="escolher-turma-icon" (click)="SelecionarTurma()">
-                      <ion-icon name="person-add"></ion-icon>
-                  </div>
-              
-            </ion-item>
-
-    </ion-card>
-  
-  
-
-
-
-  <ion-card class="card-mensagens">
-      <ion-list *ngFor="let l of listaMensagem">
-      
-        <div class="organizador-card" >
-
-          <ion-item>
-          <ion-item>
-            <ion-avatar item-start>
-              <img src="{{ isNulo(l.Imagem) }}">
-            </ion-avatar>
-            <h2>{{l.NomeCompleto}}</h2>
-            <p>{{l.Dia}} de {{SelecionaMes(l.Mes)}} de {{l.Ano}} </p>
-            </ion-item>
-        
-        <div class="card-mensagens-titulo">
-          <h2>{{l.Titulo}}.</h2>
-        </div>
-          <ion-card-content>
-            
-            <div class="card-mensagens-mensagem">
-              <p>{{l.Mensagem}}</p>
+            <div class="skeleton-card-publicacao-text">
+              <ion-label stacked>Escreva uma notificação para os seus alunos</ion-label>
             </div>
-          
-          </ion-card-content>
-        
-          <!-- <ion-row>
-            <ion-col>
-              <button ion-button icon-start clear small>
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>12 Likes</div>
-              </button>
-            </ion-col>
-            <ion-col>
-              <button ion-button icon-start clear small>
-                <ion-icon name="text"></ion-icon>
-                <div>4 Comments</div>
-              </button>
-            </ion-col>
-            <ion-col center text-center>
-              <ion-note>
-                11h ago
-              </ion-note>
-            </ion-col>
-          </ion-row> -->
-          </ion-item>
-        
-        </div>
-      
-      </ion-list>
-      
-      <ion-infinite-scroll (ionInfinite)="doInfinite($event)" >
-        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais dados..." ></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+
+              <div class="skeleton-card-publicacao-form">
+                
+                <ion-item>
+                  <ion-label class="skeleton-card-publicacao-form-titulo" floating></ion-label>
+                  <ion-input class="skeleton-card-publicacao-form-titulo" type="text" [(ngModel)]='titulo'></ion-input>
+                </ion-item>
+              
+                <ion-item>
+                  <ion-label class="skeleton-card-publicacao-form-menssage" floating></ion-label>
+                  <ion-input class="skeleton-card-publicacao-form-menssage" type="text" [(ngModel)]='publicacao'></ion-input>
+                </ion-item>
+              
+              </div>
+
+                <ion-item padding>
+                  <!-- <div class="card-publicacao-publicar"> -->
+                    <div class="skeleton-card-publicacao-button">
+                      <button class="skeleton-card-publicacao-button" ion-button >Publicar</button>
+                  </div>
+                  
+                      <div class="skeleton-escolher-turma-icon" >
+                          <ion-icon name="person-add" class="skeleton-person-add-icon"></ion-icon>
+                      </div>
+                  
+                </ion-item>
+
+        </ion-card>
        
-    
-  </ion-card>
-</div>
+        <ion-card class="skeletion-card-mensagens">
+            
+              <div class="organizador-card" >
+
+                <ion-item>
+                <ion-item>
+                  <ion-avatar classe="skeleton-image" item-start>
+                    </ion-avatar>
+                    <div class="skeleton-card-mensagens-nomcompleto">
+                      </div>
+                      <div class="skeleton-card-mensagens-dia-mes">
+                        </div>
+                  </ion-item>
+              
+              <div class="skeleton-card-mensagens-titulo">
+                </div>
+                <ion-card-content>
+                  
+                  <div class="skeleton-card-mensagens-mensagem">
+                    </div>
+                
+                </ion-card-content>
+              
+                
+                </ion-item>
+              
+              </div>
+            
+            
+            
+          
+        </ion-card>
+        
+
+    </div>
+      
+      <div class="conteudo" *ngSwitchCase="false">
+      
+        <ion-card class="card-publicacao">
+
+            <div class="card-publicacao-text">
+              <ion-label stacked>Escreva uma notificação para os seus alunos</ion-label>
+            </div>
+
+              <div class="card-publicacao-form">
+                
+                <ion-item>
+                  <ion-label floating>Título</ion-label>
+                  <ion-input type="text" [(ngModel)]='titulo'></ion-input>
+                </ion-item>
+              
+                <ion-item>
+                  <ion-label floating>Mensagem</ion-label>
+                  <ion-input type="text" [(ngModel)]='publicacao'></ion-input>
+                </ion-item>
+              
+              </div>
+
+                <ion-item padding>
+                  <!-- <div class="card-publicacao-publicar"> -->
+                    <div>
+                      <button ion-button (click)="publicar()">Publicar</button>
+                  </div>
+                  
+                      <div class="escolher-turma-icon" (click)="SelecionarTurma()">
+                          <ion-icon name="person-add"></ion-icon>
+                      </div>
+                  
+                </ion-item>
+
+        </ion-card>
+      
+        <ion-card class="card-mensagens">
+            <ion-list *ngFor="let l of listaMensagem">
+            
+            
+
+              <div  class="organizador-card" >
+
+                <ion-item>
+                <ion-item>
+                  <ion-avatar item-start>
+                    <img src="{{ isNulo(l.Imagem) }}">
+                  </ion-avatar>
+                  <h2>{{l.NomeCompleto}}</h2>
+                  <p>{{l.Dia}} de {{SelecionaMes(l.Mes)}} de {{l.Ano}} </p>
+                  </ion-item>
+              
+              <div class="card-mensagens-titulo">
+                <h2>{{l.Titulo}}.</h2>
+              </div>
+                <ion-card-content>
+                  
+                  <div class="card-mensagens-mensagem">
+                    <p>{{l.Mensagem}}</p>
+                  </div>
+                
+                </ion-card-content>
+              
+                <!-- <ion-row>
+                  <ion-col>
+                    <button ion-button icon-start clear small>
+                      <ion-icon name="thumbs-up"></ion-icon>
+                      <div>12 Likes</div>
+                    </button>
+                  </ion-col>
+                  <ion-col>
+                    <button ion-button icon-start clear small>
+                      <ion-icon name="text"></ion-icon>
+                      <div>4 Comments</div>
+                    </button>
+                  </ion-col>
+                  <ion-col center text-center>
+                    <ion-note>
+                      11h ago
+                    </ion-note>
+                  </ion-col>
+                </ion-row> -->
+                </ion-item>
+              
+              </div>
+            
+            </ion-list>
+
+            <div class="aviso"  [hidden]="listaMensagem == 0 ? false : true  "  >
+              Não existem publicações no seu Mural.
+            </div>
+            
+            <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [hidden]="listaMensagem == 0 ? true : false  " >
+              <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais dados..." ></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+            
+          
+        </ion-card>
+      </div>
+
+  </div>
 
 </ion-content>

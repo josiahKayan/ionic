@@ -14,8 +14,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Cursos</ion-title>
-    <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
+      <div class="titulo-top">
+        <div class="titulo">
+          <ion-title>Cursos - Lista</ion-title>
+        </div>
+        <div class="exit-icon">
+          <ion-icon name="exit" (click)="showConfirm()"></ion-icon>
+        </div>
+      </div>
   </ion-navbar>
 
 </ion-header>
@@ -25,7 +31,9 @@
   <ion-list inset>
     <ion-item *ngFor="let curso of cursos; let i = index;">
         <div class="nome-curso">
-          {{ curso.Nome }} - {{curso.CursoId}}
+          {{ curso.Nome }}
+          <!-- {{ curso.Nome }} - {{curso.CursoId}} -->
+
         </div>
         <div class="edicoes">
           <button ion-button clear item-end (click)="detalhar(curso.CursoId)">Detalhes</button>
